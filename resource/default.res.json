@@ -1,0 +1,11 @@
+{
+	"groups":[{
+			"keys":"background_png",
+			"name":"preload"
+		}],
+	"resources":[{
+			"name":"background_png",
+			"type":"image",
+			"url":"assets/battlepass/background.png"
+		}]
+}
