@@ -118,7 +118,7 @@ class GameResult extends egret.DisplayObjectContainer {
     public startAnimate() {
         egret.Tween.get(this._result).to({alpha: 1, x: this.getCenterX(this._result.width)}, 300, egret.Ease.bounceOut)
         egret.Tween.get(this._level).wait(150).to({alpha: 1,x: this.getCenterX(this._level.width)}, 300)
-        egret.Tween.get(this._levelStar).wait(150).to({alpha: 1,x: this.getCenterX(this._levelStar.width)}, 300)
+        egret.Tween.get(this._levelStar).wait(150).to({alpha: 1,x: this.getCenterX(this._levelStar.width)}, 300).call(() => this._levelStar.startAnimate())
         egret.Tween.get(this._exp).wait(300).to({alpha: 1,x: this.getCenterX(this._exp.width)}, 300)
         egret.Tween.get(this._coins).wait(450).to({alpha: 1,x: this.getCenterX(this._coins.width)}, 300)
     }
@@ -159,7 +159,7 @@ class GameResult extends egret.DisplayObjectContainer {
         this.addChild(level);
         this._level = level;
 
-        let levelStar = new LevelStar();
+        let levelStar = new LevelStar(true);
         levelStar.x = this.width + this.getCenterX(levelStar.width);
         levelStar.y = level.y + level.height + 30;
         this.addChild(levelStar);

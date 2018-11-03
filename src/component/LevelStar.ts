@@ -1,8 +1,12 @@
 
 class LevelStar extends egret.DisplayObjectContainer {
 
-    public constructor() {
+    private animate: boolean;
+    private animateStar: egret.DisplayObject;
+
+    public constructor(animate: boolean = false) {
         super();
+        this.animate = animate;
         this.createItems();
     }
 
@@ -21,14 +25,21 @@ class LevelStar extends egret.DisplayObjectContainer {
             star.texture = RES.getRes(v);
             star.width /= 1.5;
             star.height /= 1.5;
+            star.anchorOffsetX = star.width / 2;
+            star.anchorOffsetY = star.height / 2;
             allStar.push(star)
+            if (i == 2 && this.animate) {
+                star.scaleX = 1.75;
+                star.scaleY = 1.75;
+                this.animateStar = star;
+            }
         }
         let space = 8;
         let incr = 0;
         let starHeight = 0;
         for (let i=0; i<allStar.length; i++) {
             let star =  allStar[i];
-            star.x = incr;
+            star.x = (i * star.width) + (star.width / 2) + (i * 8);
             this.addChild(star);
             incr += star.width + space;
             starHeight = star.height;
@@ -37,5 +48,9 @@ class LevelStar extends egret.DisplayObjectContainer {
         this.width = incr - 8;
     }
 
+
+    public startAnimate() {
+        egret.Tween.get(this.animateStar).to({scaleX: 1, scaleY: 1}, 300, egret.Ease.backIn);
+    }
 
 }
