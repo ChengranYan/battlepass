@@ -34,9 +34,10 @@ class SettlementScene extends egret.DisplayObjectContainer implements BPNavigato
         this.addChild(navigationBar);
         let girl = new egret.Bitmap();
         girl.texture = RES.getRes("drawing_0"+this._girlNo+"_png");
-        girl.y = 200;
         girl.width /= 1.5;
         girl.height /= 1.5;
+        girl.x = -girl.width;
+        girl.y = 200;
         
 
         let gameResult = new GameResult(this._isWin);
@@ -46,7 +47,7 @@ class SettlementScene extends egret.DisplayObjectContainer implements BPNavigato
 
         let moreReward = new MoreReward();
         moreReward.y = gameResult.y + gameResult.height + 40;
-        moreReward.x = stageW - moreReward.width;
+        moreReward.x = stageW;
         this.addChild(moreReward);
 
 
@@ -66,17 +67,27 @@ class SettlementScene extends egret.DisplayObjectContainer implements BPNavigato
 
         let space = (stageW - backBtn.width - playAgainBtn.width) / 3;
         let btnY = stageH - 40;
-        backBtn.x = space;
+        backBtn.x = stageW + space;
         backBtn.y = btnY - backBtn.height;
 
-        playAgainBtn.x = backBtn.x + backBtn.width + space;
+        playAgainBtn.x = stageW + backBtn.x + backBtn.width + space;
         playAgainBtn.y = btnY - playAgainBtn.height;
 
         this.addChild(backBtn);
         this.addChild(playAgainBtn);
 
-
-
+        let timer = new egret.Timer(400, 1);
+        timer.addEventListener(
+                egret.TimerEvent.TIMER_COMPLETE,
+                () => {
+                    egret.Tween.get(girl).to({x: 0}, 500, egret.Ease.bounceOut);
+                    gameResult.startAnimate();
+                    egret.Tween.get(moreReward).wait(500).to({x: stageW - moreReward.width}, 300);
+                    egret.Tween.get(backBtn).wait(500).to({x: space}, 300);
+                    egret.Tween.get(playAgainBtn).wait(500).to({x: space + space + backBtn.width}, 300);
+                }
+                ,this);
+        timer.start();
         this.addChild(girl);
     }
 
@@ -99,10 +110,18 @@ class SettlementScene extends egret.DisplayObjectContainer implements BPNavigato
 class GameResult extends egret.DisplayObjectContainer {
 
     private _result:egret.Bitmap;
-    private _rank:egret.Bitmap;
-    private _star:egret.Bitmap;
-    private _expOfRewardIcon:egret.Bitmap;
-    private _coinOfRewardIcon:egret.Bitmap;
+    private _level:egret.TextField;
+    private _levelStar:LevelStar;
+    private _exp:RewardItem;
+    private _coins:RewardItem;
+
+    public startAnimate() {
+        egret.Tween.get(this._result).to({alpha: 1, x: this.getCenterX(this._result.width)}, 300, egret.Ease.bounceOut)
+        egret.Tween.get(this._level).wait(150).to({alpha: 1,x: this.getCenterX(this._level.width)}, 300)
+        egret.Tween.get(this._levelStar).wait(150).to({alpha: 1,x: this.getCenterX(this._levelStar.width)}, 300)
+        egret.Tween.get(this._exp).wait(300).to({alpha: 1,x: this.getCenterX(this._exp.width)}, 300)
+        egret.Tween.get(this._coins).wait(450).to({alpha: 1,x: this.getCenterX(this._coins.width)}, 300)
+    }
 
     public constructor(isWin:boolean) {
         super();
@@ -111,10 +130,12 @@ class GameResult extends egret.DisplayObjectContainer {
         this.createItems(isWin);
     }
 
+    private getCenterX = (width:number) => {
+        return (this.width / 2) - (width / 2);
+    };
+
     private createItems(isWin:boolean) {
-        let getCenterX = (width:number) => {
-            return (this.width / 2) - (width / 2);
-        };
+        
         let result = new egret.Bitmap();
         if (isWin) {
             result.texture = RES.getRes("result_win_png");
@@ -123,35 +144,45 @@ class GameResult extends egret.DisplayObjectContainer {
         }
         result.width /= 1.5;
         result.height /= 1.5;
-        result.x = getCenterX(result.width);
+        result.alpha = 0.5;
+        result.x = this.width + this.getCenterX(result.width);
         this.addChild(result);
+        this._result = result;
 
         let level = new egret.TextField();
         level.text = "白银二段";
         level.size = 43;
         level.bold = true;
-        level.x = getCenterX(level.textWidth);
+        level.x = this.width + this.getCenterX(level.textWidth);
         level.y = result.height + 40;
+        level.alpha = 0.5;
         this.addChild(level);
+        this._level = level;
 
         let levelStar = new LevelStar();
-        levelStar.x = getCenterX(levelStar.width);
+        levelStar.x = this.width + this.getCenterX(levelStar.width);
         levelStar.y = level.y + level.height + 30;
         this.addChild(levelStar);
+        this._levelStar = levelStar;
 
         let exp = new RewardItem("经验值+"+(isWin ? "30":"10"), "ic_exp_png");
-        exp.x = getCenterX(exp.width)-30;
+        exp.x = this.width + this.getCenterX(exp.width)-30;
         exp.y = levelStar.y + levelStar.height + 30;
         this.addChild(exp);
+        this._exp = exp;
+
         let coins = new RewardItem("洋葱币+100", "ic_coins_png");
         coins.x = exp.x;
         coins.y = exp.y + exp.height + 30;
         this.addChild(coins);
+        this._coins = coins;
 
         if (!isWin) {
             coins.visible = false;
         }
     }
+
+    
 
 }
 

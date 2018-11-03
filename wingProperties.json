@@ -2,11 +2,11 @@
 	"resourcePlugin": {
 		"configs": [
 			{
-				"configPath": "resource/default.res.json",
+				"configPath": "../../../Desktop/resource.json",
 				"relativePath": "resource/"
 			},
 			{
-				"configPath": "../../../Desktop/resource.json",
+				"configPath": "resource/default.res.json",
 				"relativePath": "resource/"
 			}
 		]

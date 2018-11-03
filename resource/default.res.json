@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "background_png,app_bar_ic_back_png,back_to_main_png,ic_coins_png,ic_exp_png,play_again_png,result_lose_png,result_win_png,star_dark_png,star_light_png,more_reward_window_png,reward_item_1_png,reward_item_2_png,reward_item_3_png,drawing_01_png,drawing_02_png,drawing_03_png,drawing_04_png,entrance_1v1_png,entrance_solo_png,ic_boy_png,ic_girl_png,receive_battle_pass_png,new_popup_view_png,hint_into_season_png,coming_soon_png",
+			"keys": "background_png,app_bar_ic_back_png,back_to_main_png,ic_coins_png,ic_exp_png,play_again_png,result_lose_png,result_win_png,star_dark_png,star_light_png,more_reward_window_png,reward_item_1_png,reward_item_2_png,reward_item_3_png,drawing_02_png,drawing_03_png,drawing_04_png,entrance_1v1_png,entrance_solo_png,ic_boy_png,ic_girl_png,coming_soon_png,mask_png,new_season_tips_png,new_season_confirm_png,new_popup_view_png,drawing_01_png",
 			"name": "preload"
 		}
 	],
@@ -77,11 +77,6 @@
 			"name": "reward_item_3_png"
 		},
 		{
-			"url": "assets/battlepass/settlement/drawing_01.png",
-			"type": "image",
-			"name": "drawing_01_png"
-		},
-		{
 			"url": "assets/battlepass/settlement/drawing_02.png",
 			"type": "image",
 			"name": "drawing_02_png"
@@ -117,9 +112,19 @@
 			"name": "ic_girl_png"
 		},
 		{
-			"url": "assets/battlepass/startup/receive_battle_pass.png",
+			"url": "assets/battlepass/startup/coming_soon.png",
 			"type": "image",
-			"name": "receive_battle_pass_png"
+			"name": "coming_soon_png"
+		},
+		{
+			"url": "assets/battlepass/startup/mask.png",
+			"type": "image",
+			"name": "mask_png"
+		},
+		{
+			"url": "assets/battlepass/startup/new_season_tips.png",
+			"type": "image",
+			"name": "new_season_tips_png"
 		},
 		{
 			"url": "assets/battlepass/startup/new_popup_view.png",
@@ -127,14 +132,14 @@
 			"name": "new_popup_view_png"
 		},
 		{
-			"url": "assets/battlepass/startup/hint_into_season.png",
+			"url": "assets/battlepass/startup/new_season_confirm.png",
 			"type": "image",
-			"name": "hint_into_season_png"
+			"name": "new_season_confirm_png"
 		},
 		{
-			"name": "coming_soon_png",
+			"url": "assets/battlepass/settlement/drawing_01.png",
 			"type": "image",
-			"url": "assets/battlepass/startup/coming_soon.png"
+			"name": "drawing_01_png"
 		}
 	]
 }
