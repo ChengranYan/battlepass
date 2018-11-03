@@ -1,11 +1,140 @@
 {
-	"groups":[{
-			"keys":"background_png",
-			"name":"preload"
-		}],
-	"resources":[{
-			"name":"background_png",
-			"type":"image",
-			"url":"assets/battlepass/background.png"
-		}]
+	"groups": [
+		{
+			"keys": "background_png,app_bar_ic_back_png,back_to_main_png,ic_coins_png,ic_exp_png,play_again_png,result_lose_png,result_win_png,star_dark_png,star_light_png,more_reward_window_png,reward_item_1_png,reward_item_2_png,reward_item_3_png,drawing_01_png,drawing_02_png,drawing_03_png,drawing_04_png,entrance_1v1_png,entrance_solo_png,ic_boy_png,ic_girl_png,receive_battle_pass_png,new_popup_view_png,hint_into_season_png,coming_soon_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/battlepass/background.png",
+			"type": "image",
+			"name": "background_png"
+		},
+		{
+			"url": "assets/battlepass/app_bar_ic_back.png",
+			"type": "image",
+			"name": "app_bar_ic_back_png"
+		},
+		{
+			"url": "assets/battlepass/settlement/back_to_main.png",
+			"type": "image",
+			"name": "back_to_main_png"
+		},
+		{
+			"url": "assets/battlepass/settlement/ic_coins.png",
+			"type": "image",
+			"name": "ic_coins_png"
+		},
+		{
+			"url": "assets/battlepass/settlement/ic_exp.png",
+			"type": "image",
+			"name": "ic_exp_png"
+		},
+		{
+			"url": "assets/battlepass/settlement/play_again.png",
+			"type": "image",
+			"name": "play_again_png"
+		},
+		{
+			"url": "assets/battlepass/settlement/result_lose.png",
+			"type": "image",
+			"name": "result_lose_png"
+		},
+		{
+			"url": "assets/battlepass/settlement/result_win.png",
+			"type": "image",
+			"name": "result_win_png"
+		},
+		{
+			"url": "assets/battlepass/settlement/star_dark.png",
+			"type": "image",
+			"name": "star_dark_png"
+		},
+		{
+			"url": "assets/battlepass/settlement/star_light.png",
+			"type": "image",
+			"name": "star_light_png"
+		},
+		{
+			"url": "assets/battlepass/settlement/more_reward_window.png",
+			"type": "image",
+			"name": "more_reward_window_png"
+		},
+		{
+			"url": "assets/battlepass/settlement/reward_item_1.png",
+			"type": "image",
+			"name": "reward_item_1_png"
+		},
+		{
+			"url": "assets/battlepass/settlement/reward_item_2.png",
+			"type": "image",
+			"name": "reward_item_2_png"
+		},
+		{
+			"url": "assets/battlepass/settlement/reward_item_3.png",
+			"type": "image",
+			"name": "reward_item_3_png"
+		},
+		{
+			"url": "assets/battlepass/settlement/drawing_01.png",
+			"type": "image",
+			"name": "drawing_01_png"
+		},
+		{
+			"url": "assets/battlepass/settlement/drawing_02.png",
+			"type": "image",
+			"name": "drawing_02_png"
+		},
+		{
+			"url": "assets/battlepass/settlement/drawing_03.png",
+			"type": "image",
+			"name": "drawing_03_png"
+		},
+		{
+			"url": "assets/battlepass/settlement/drawing_04.png",
+			"type": "image",
+			"name": "drawing_04_png"
+		},
+		{
+			"url": "assets/battlepass/startup/entrance_1v1.png",
+			"type": "image",
+			"name": "entrance_1v1_png"
+		},
+		{
+			"url": "assets/battlepass/startup/entrance_solo.png",
+			"type": "image",
+			"name": "entrance_solo_png"
+		},
+		{
+			"url": "assets/battlepass/startup/ic_boy.png",
+			"type": "image",
+			"name": "ic_boy_png"
+		},
+		{
+			"url": "assets/battlepass/startup/ic_girl.png",
+			"type": "image",
+			"name": "ic_girl_png"
+		},
+		{
+			"url": "assets/battlepass/startup/receive_battle_pass.png",
+			"type": "image",
+			"name": "receive_battle_pass_png"
+		},
+		{
+			"url": "assets/battlepass/startup/new_popup_view.png",
+			"type": "image",
+			"name": "new_popup_view_png"
+		},
+		{
+			"url": "assets/battlepass/startup/hint_into_season.png",
+			"type": "image",
+			"name": "hint_into_season_png"
+		},
+		{
+			"name": "coming_soon_png",
+			"type": "image",
+			"url": "assets/battlepass/startup/coming_soon.png"
+		}
+	]
 }

@@ -29,7 +29,7 @@
 
 class Main extends egret.DisplayObjectContainer {
 
-
+    private navigator: BPNavigator;
 
     public constructor() {
         super();
@@ -93,7 +93,7 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene() {
-
+        
         let bg = this.createBitmapByName("background_png");
         this.addChild(bg);
         let stageW = this.stage.stageWidth;
@@ -143,7 +143,10 @@ class Main extends egret.DisplayObjectContainer {
         // textfield.y = 135;
         // this.textfield = textfield;
 
-
+        let settlementScene = new SettlementScene(true, 1);
+        let startup = new Startup();
+        // this.addChild(startup);
+        this.navigator = new BPNavigator(this.stage, startup);
     }
 
     /**
