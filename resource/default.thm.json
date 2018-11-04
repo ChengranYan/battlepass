@@ -1,8 +1,8 @@
 {
-    "skins": {},
-    "autoGenerateExmlsList": true,
-    "exmls": [
-        "resource/skin/Fighting.exml"
-    ],
-    "path": "resource/default.thm.json"
+	"skins": {},
+	"autoGenerateExmlsList": true,
+	"exmls": [
+		"resource/skin/Fighting.exml"
+	],
+	"path": "resource/default.thm.json"
 }

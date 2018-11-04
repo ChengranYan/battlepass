@@ -42,9 +42,6 @@ namespace utils {
          * 当scene添加到舞台调用
          */    
         abstract onAddStage(): void;
-        // protected onAddStage(){
-            
-        // }
         
         /**
          * 当scene移除后调用

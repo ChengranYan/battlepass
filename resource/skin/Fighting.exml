@@ -2,10 +2,10 @@
 <e:Skin class="Fighting" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<w:Config id="166df2c0ebd"/>
 	<e:Group width="750" height="120" x="0" y="20" anchorOffsetX="0" anchorOffsetY="0">
-		<e:Rect height="120" y="6" width="373" anchorOffsetX="0" anchorOffsetY="0" fillColor="0x6552e6" strokeColor="0x7d5bd3" strokeWeight="12" ellipseWidth="120" ellipseHeight="120" x="375"/>
-		<e:Rect height="120" y="0" width="452" anchorOffsetX="0" anchorOffsetY="0" fillColor="0x6552E6" strokeColor="0x7D5BD3" strokeWeight="12" ellipseWidth="120" ellipseHeight="120" x="-77" scaleX="1" scaleY="1"/>
+		<e:Rect height="120" y="6" width="375" anchorOffsetX="0" anchorOffsetY="0" fillColor="0x6552e6" strokeColor="0x7d5bd3" strokeWeight="12" ellipseWidth="120" ellipseHeight="120" x="-23"/>
+		<e:Rect height="120" y="0" width="375" anchorOffsetX="0" anchorOffsetY="0" fillColor="0x6552E6" strokeColor="0x7D5BD3" strokeWeight="12" ellipseWidth="120" ellipseHeight="120" scaleX="1" scaleY="1" x="398"/>
 		<e:layout>
-			<e:TileLayout orientation="rows"/>
+			<e:BasicLayout/>
 		</e:layout>
 	</e:Group>
     
