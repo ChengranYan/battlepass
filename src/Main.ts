@@ -69,6 +69,8 @@ class Main extends eui.UILayer {
             this.loadingView = new LoadingUI();
             this.stage.addChild(this.loadingView);
             await RES.loadConfig("resource/default.res.json", "resource/");
+            // 加载 EUI Theme
+            await new eui.Theme("resource/default.thm.json", this.stage);
             await RES.loadGroup("preload", 0, this.loadingView);
             this.stage.removeChild(this.loadingView);
         }
@@ -92,11 +94,16 @@ class Main extends eui.UILayer {
         bg.height = stageH;
 
         utils.App.init(this)
-        let settlementScene = new SettlementScene(true, 1);
+        // 启动scene
         let startup = new Startup();
+        // 对战scene
+        let fighting = new FightingScene();
+        // 结算scene
+        let settlementScene = new SettlementScene(true, 1);
         
-        utils.App.pushScene(startup);
-        utils.App.pushScene(settlementScene);
+        // utils.App.pushScene(startup);
+        // utils.App.pushScene(settlementScene);
+        utils.App.pushScene(fighting);
         
         // this.addChild(startup);
         // this.navigator = new BPNavigator(this.stage, startup);
