@@ -1,77 +1,65 @@
-
-class Startup extends utils.Scene implements BPNavigatorAware {
-
-    private comingSoonAlert: BPAlert;
-    private newSeasonAlert: BPAlert;
-
-    private navigator: BPNavigator;
-
-    public setNavigator(navigator: BPNavigator) {
+var __reflect = (this && this.__reflect) || function (p, c, t) {
+    p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
+};
+var __extends = this && this.__extends || function __extends(t, e) { 
+ function r() { 
+ this.constructor = t;
+}
+for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
+r.prototype = e.prototype, t.prototype = new r();
+};
+var Startup = (function (_super) {
+    __extends(Startup, _super);
+    function Startup() {
+        var _this = _super.call(this) || this;
+        _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
+        return _this;
+    }
+    Startup.prototype.setNavigator = function (navigator) {
         this.navigator = navigator;
-    }
-
-    public constructor() {
-        super();
-        // this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
-    }
-
-    onAddStage() {
+    };
+    Startup.prototype.onAddToStage = function (event) {
+        var _this = this;
         this.createItems();
-
-        var timer:egret.Timer = new egret.Timer(500,1);
-        timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,() => {this.newSeasonAlert.present()},this);
+        var timer = new egret.Timer(500, 1);
+        timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, function () { _this.newSeasonAlert.present(); }, this);
         timer.start();
-    }
-
-    onRemoveStage() {
-        
-    }
-
-
-
-    private createItems() {
-        let stageW = this.stage.stageWidth;
-        let stageH = this.stage.stageHeight;
-
-        let getCenterX = (width:number) => {
+    };
+    Startup.prototype.createItems = function () {
+        var _this = this;
+        var stageW = this.stage.stageWidth;
+        var stageH = this.stage.stageHeight;
+        var getCenterX = function (width) {
             return (stageW / 2) - (width / 2);
         };
-
-        let navigationBar = new NavigationBar();
-        navigationBar.onBackDidClick = () => {
-            this.backToMain();
-        }
+        var navigationBar = new NavigationBar();
+        navigationBar.onBackDidClick = function () {
+            _this.backToMain();
+        };
         this.addChild(navigationBar);
-
-        let avatar = new egret.Bitmap();
+        var avatar = new egret.Bitmap();
         avatar.texture = RES.getRes("new_popup_view_png");
         avatar.width = 160;
         avatar.height = 160;
         avatar.y = 200;
         avatar.x = getCenterX(avatar.width);
-        
         this.addChild(avatar);
-        
-        let nicknameGender = new NicknameGender("小可爱", 1);
+        var nicknameGender = new NicknameGender("小可爱", 1);
         nicknameGender.x = getCenterX(nicknameGender.width);
         nicknameGender.y = avatar.y + avatar.height + 30;
         this.addChild(nicknameGender);
-        
-        let level = new egret.TextField();
+        var level = new egret.TextField();
         level.text = "白银二段";
         level.size = 45;
         level.bold = true;
         level.x = getCenterX(level.textWidth);
         level.y = nicknameGender.y + nicknameGender.height + 30;
         this.addChild(level);
-
-
-        let levelStar = new LevelStar();
+        var levelStar = new LevelStar();
         levelStar.x = getCenterX(levelStar.width);
         levelStar.y = level.y + level.height + 30;
         this.addChild(levelStar);
-
-        let offlineMode = new egret.Bitmap();
+        var offlineMode = new egret.Bitmap();
         offlineMode.texture = RES.getRes("entrance_solo_png");
         offlineMode.width /= 1.5;
         offlineMode.height /= 1.5;
@@ -80,8 +68,7 @@ class Startup extends utils.Scene implements BPNavigatorAware {
         offlineMode.touchEnabled = true;
         offlineMode.addEventListener(egret.TouchEvent.TOUCH_TAP, this.enterOfflineMode, this);
         this.addChild(offlineMode);
-    
-        let onlineMode = new egret.Bitmap();
+        var onlineMode = new egret.Bitmap();
         onlineMode.texture = RES.getRes("entrance_1v1_png");
         onlineMode.width /= 1.5;
         onlineMode.height /= 1.5;
@@ -90,16 +77,13 @@ class Startup extends utils.Scene implements BPNavigatorAware {
         onlineMode.touchEnabled = true;
         onlineMode.addEventListener(egret.TouchEvent.TOUCH_TAP, this.enterOnlineMode, this);
         this.addChild(onlineMode);
-
-
-        let content = new egret.Bitmap();
+        var content = new egret.Bitmap();
         content.texture = RES.getRes("coming_soon_png");
         content.width /= 1.5;
         content.height /= 1.5;
         content.touchEnabled = true;
         content.addEventListener(egret.TouchEvent.TOUCH_TAP, this.dismissComingSoonAlert, this);
         this.comingSoonAlert = new BPAlert(content, this.stage);
-
         content = new egret.Bitmap();
         content.texture = RES.getRes("new_popup_view_png");
         content.width /= 1.5;
@@ -107,54 +91,49 @@ class Startup extends utils.Scene implements BPNavigatorAware {
         content.touchEnabled = true;
         content.addEventListener(egret.TouchEvent.TOUCH_TAP, this.dismissNewSeasonAlert, this);
         this.newSeasonAlert = new BPAlert(content, this.stage);
-    }
-
-    private enterOnlineMode() {
+    };
+    Startup.prototype.enterOnlineMode = function () {
         // TODO 跳转准备阶段
         console.log("跳转准备阶段", this.navigator);
-        let settlementScene = new SettlementScene(true, 1);
+        var settlementScene = new SettlementScene(true, 1);
         this.navigator.push(settlementScene);
-    }
-
-    private enterOfflineMode() {
-        console.log('enterOfflineMode')
+    };
+    Startup.prototype.enterOfflineMode = function () {
+        console.log('enterOfflineMode');
         this.comingSoonAlert.present(true);
-    }
-    private dismissComingSoonAlert() {
+    };
+    Startup.prototype.dismissComingSoonAlert = function () {
         this.comingSoonAlert.dismiss();
-    }
-
-    private dismissNewSeasonAlert() {
+    };
+    Startup.prototype.dismissNewSeasonAlert = function () {
         this.newSeasonAlert.dismiss();
-    }
-
-    private backToMain() {
+    };
+    Startup.prototype.backToMain = function () {
         //TODO 退出游戏
-        console.log("backToMain")
+        console.log("backToMain");
         this.navigator.pop();
+    };
+    return Startup;
+}(egret.DisplayObjectContainer));
+__reflect(Startup.prototype, "Startup", ["BPNavigatorAware", "egret.DisplayObject"]);
+var NicknameGender = (function (_super) {
+    __extends(NicknameGender, _super);
+    function NicknameGender(nickname, gender) {
+        var _this = _super.call(this) || this;
+        _this.createItems(nickname, gender);
+        return _this;
     }
-
-}
-
-class NicknameGender extends egret.DisplayObjectContainer {
-
-    public constructor(nickname: string, gender: number) {
-        super();
-        this.createItems(nickname, gender);
-    }
-
-    private createItems(nickname: string, gender: number) {
-        let nicknameTextField = new egret.TextField();
+    NicknameGender.prototype.createItems = function (nickname, gender) {
+        var nicknameTextField = new egret.TextField();
         nicknameTextField.text = nickname;
         nicknameTextField.size = 28;
         nicknameTextField.alpha = 0.6;
-
         this.addChild(nicknameTextField);
-
-        let genderImage = new egret.Bitmap();
+        var genderImage = new egret.Bitmap();
         if (gender == 1) {
             genderImage.texture = RES.getRes("ic_boy_png");
-        } else {
+        }
+        else {
             genderImage.texture = RES.getRes("ic_girl_png");
         }
         genderImage.width /= 1.5;
@@ -162,11 +141,9 @@ class NicknameGender extends egret.DisplayObjectContainer {
         genderImage.x = nicknameTextField.textWidth + 10;
         genderImage.y = 0;
         this.addChild(genderImage);
-        
         this.width = genderImage.x + genderImage.width;
         this.height = genderImage.height;
-
-    }
-
-}
-
+    };
+    return NicknameGender;
+}(egret.DisplayObjectContainer));
+__reflect(NicknameGender.prototype, "NicknameGender");
