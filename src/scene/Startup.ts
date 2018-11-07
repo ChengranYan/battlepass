@@ -108,11 +108,10 @@ class Startup extends egret.DisplayObjectContainer implements BPNavigatorAware {
     }
 
     private enterOnlineMode() {
-        // TODO 跳转准备阶段
         console.log("跳转准备阶段", this.navigator);
         // let settlementScene = new SettlementScene(true, 1);
-        let readyScene = new ReadyScene();
-        this.navigator.push(readyScene);
+        let selecteroleScene = new SelecteroleScene();
+        this.navigator.push(selecteroleScene);
     }
 
     private enterOfflineMode() {

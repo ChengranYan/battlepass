@@ -37,7 +37,6 @@ class Main extends egret.DisplayObjectContainer {
     }
 
     private onAddToStage(event: egret.Event) {
-
         egret.lifecycle.addLifecycleListener((context) => {
             // custom lifecycle plugin
 
@@ -95,14 +94,12 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene() {
-        
         let bg = this.createBitmapByName("background_png");
         this.addChild(bg);
         let stageW = this.stage.stageWidth;
         let stageH = this.stage.stageHeight;
         bg.width = stageW;
         bg.height = stageH;
-
         // let topMask = new egret.Shape();
         // topMask.graphics.beginFill(0x000000, 0.5);
         // topMask.graphics.drawRect(0, 0, stageW, 172);
@@ -124,31 +121,10 @@ class Main extends egret.DisplayObjectContainer {
         // line.y = 61;
         // this.addChild(line);
 
-        let colorLabel = new egret.TextField();
-        colorLabel.textColor = 0xffffff;
-        colorLabel.width = stageW;
-        colorLabel.textAlign = "center";
-        colorLabel.text = "洋葱试炼场";
-        colorLabel.size = 32;
-        colorLabel.x = 0;
-        colorLabel.y = 68;
-        // this.addChild(colorLabel);
-
-        // let textfield = new egret.TextField();
-        // this.addChild(textfield);
-        // textfield.alpha = 0;
-        // textfield.width = stageW - 172;
-        // textfield.textAlign = egret.HorizontalAlign.CENTER;
-        // textfield.size = 24;
-        // textfield.textColor = 0xffffff;
-        // textfield.x = 172;
-        // textfield.y = 135;
-        // this.textfield = textfield;
-
         let settlementScene = new SettlementScene(true, 1);
         let startup = new Startup();
-        let readyScene = new ReadyScene();
-        // this.addChild(startup);
+        let selectRoleScene = new SelecteroleScene();
+
         this.navigator = new BPNavigator(this.stage, startup);
     }
 
