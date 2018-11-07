@@ -77,6 +77,8 @@ class Main extends egret.DisplayObjectContainer {
         try {
             const loadingView = new LoadingUI();
             this.stage.addChild(loadingView);
+            // egret.ImageLoader.crossOrigin = "anonymous";
+            // await RES.loadConfig("http://192.168.3.103:5000/resource/default.res.json", "http://192.168.3.103:5000/resource/")
             await RES.loadConfig("resource/default.res.json", "resource/");
             await RES.loadGroup("preload", 0, loadingView);
             this.stage.removeChild(loadingView);
@@ -130,7 +132,7 @@ class Main extends egret.DisplayObjectContainer {
         colorLabel.size = 32;
         colorLabel.x = 0;
         colorLabel.y = 68;
-        this.addChild(colorLabel);
+        // this.addChild(colorLabel);
 
         // let textfield = new egret.TextField();
         // this.addChild(textfield);
@@ -145,6 +147,7 @@ class Main extends egret.DisplayObjectContainer {
 
         let settlementScene = new SettlementScene(true, 1);
         let startup = new Startup();
+        let readyScene = new ReadyScene();
         // this.addChild(startup);
         this.navigator = new BPNavigator(this.stage, startup);
     }

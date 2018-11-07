@@ -53,7 +53,7 @@ class BPAlert extends egret.EventDispatcher {
             contentTw.to({
                 scaleX: 1,
                 scaleY: 1
-            }, 500, egret.Ease.bounceOut)
+            }, 500, egret.Ease.backOut)
         }
         
         if (autoDismiss) {
@@ -69,7 +69,7 @@ class BPAlert extends egret.EventDispatcher {
 
     public dismiss() {
         let tw = egret.Tween.get(this.content);
-        tw.to({scaleX: 0, scaleY: 0}, 500, egret.Ease.bounceIn).call(() => {
+        tw.to({scaleX: 0, scaleY: 0}, 500, egret.Ease.backIn).call(() => {
             if (this.container.contains(this.content)) {
                 this.container.removeChild(this.content);
             }

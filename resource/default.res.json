@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "background_png,app_bar_ic_back_png,back_to_main_png,ic_coins_png,ic_exp_png,play_again_png,result_lose_png,result_win_png,star_dark_png,star_light_png,more_reward_window_png,reward_item_1_png,reward_item_2_png,reward_item_3_png,drawing_02_png,drawing_03_png,drawing_04_png,entrance_1v1_png,entrance_solo_png,ic_boy_png,ic_girl_png,coming_soon_png,mask_png,new_season_tips_png,new_season_confirm_png,new_popup_view_png,drawing_01_png",
+			"keys": "background_png,app_bar_ic_back_png,back_to_main_png,ic_coins_png,ic_exp_png,play_again_png,result_lose_png,result_win_png,star_dark_png,star_light_png,more_reward_window_png,reward_item_1_png,reward_item_2_png,reward_item_3_png,drawing_02_png,drawing_03_png,drawing_04_png,entrance_1v1_png,entrance_solo_png,ic_boy_png,ic_girl_png,coming_soon_png,mask_png,new_season_tips_png,new_season_confirm_png,new_popup_view_png,drawing_01_png,ready_drawing_01_png,ready_drawing_02_png,ready_drawing_03_png,ready_drawing_04_png,ready_prop_clothing_text_png,ready_prop_ink_png,ready_prop_practice_png,ready_prop_time_png,ready_select_background_png,ready_start_matching_png,ready_avatar_drawing_01_png,ready_avatar_drawing_02_png,ready_avatar_drawing_03_png,ready_avatar_drawing_04_png,ready_rule_confirm_png,ready_rule_description_png",
 			"name": "preload"
 		}
 	],
@@ -140,6 +140,86 @@
 			"url": "assets/battlepass/settlement/drawing_01.png",
 			"type": "image",
 			"name": "drawing_01_png"
+		},
+		{
+			"name": "ready_drawing_01_png",
+			"type": "image",
+			"url": "assets/battlepass/ready/ready_drawing_01.png"
+		},
+		{
+			"name": "ready_drawing_02_png",
+			"type": "image",
+			"url": "assets/battlepass/ready/ready_drawing_02.png"
+		},
+		{
+			"name": "ready_drawing_03_png",
+			"type": "image",
+			"url": "assets/battlepass/ready/ready_drawing_03.png"
+		},
+		{
+			"name": "ready_drawing_04_png",
+			"type": "image",
+			"url": "assets/battlepass/ready/ready_drawing_04.png"
+		},
+		{
+			"name": "ready_prop_clothing_text_png",
+			"type": "image",
+			"url": "assets/battlepass/ready/ready_prop_clothing_text.png"
+		},
+		{
+			"name": "ready_prop_ink_png",
+			"type": "image",
+			"url": "assets/battlepass/ready/ready_prop_ink.png"
+		},
+		{
+			"name": "ready_prop_practice_png",
+			"type": "image",
+			"url": "assets/battlepass/ready/ready_prop_practice.png"
+		},
+		{
+			"name": "ready_prop_time_png",
+			"type": "image",
+			"url": "assets/battlepass/ready/ready_prop_time.png"
+		},
+		{
+			"name": "ready_select_background_png",
+			"type": "image",
+			"url": "assets/battlepass/ready/ready_select_background.png"
+		},
+		{
+			"name": "ready_start_matching_png",
+			"type": "image",
+			"url": "assets/battlepass/ready/ready_start_matching.png"
+		},
+		{
+			"name": "ready_avatar_drawing_01_png",
+			"type": "image",
+			"url": "assets/battlepass/ready/ready_avatar_drawing_01.png"
+		},
+		{
+			"name": "ready_avatar_drawing_02_png",
+			"type": "image",
+			"url": "assets/battlepass/ready/ready_avatar_drawing_02.png"
+		},
+		{
+			"name": "ready_avatar_drawing_03_png",
+			"type": "image",
+			"url": "assets/battlepass/ready/ready_avatar_drawing_03.png"
+		},
+		{
+			"name": "ready_avatar_drawing_04_png",
+			"type": "image",
+			"url": "assets/battlepass/ready/ready_avatar_drawing_04.png"
+		},
+		{
+			"name": "ready_rule_confirm_png",
+			"type": "image",
+			"url": "assets/battlepass/ready/ready_rule_confirm.png"
+		},
+		{
+			"name": "ready_rule_description_png",
+			"type": "image",
+			"url": "assets/battlepass/ready/ready_rule_description.png"
 		}
 	]
 }

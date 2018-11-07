@@ -3,11 +3,12 @@ class NavigationBar extends egret.DisplayObjectContainer {
 
     private backBtn:egret.Bitmap;
     private title:egret.TextField;
-
+    private titleText: string;
     public onBackDidClick:Function;
 
-    public constructor() {
+    public constructor(titleText: string = "洋葱试炼场") {
         super();
+        this.titleText = titleText;
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
 
@@ -20,17 +21,17 @@ class NavigationBar extends egret.DisplayObjectContainer {
         let stageW = this.stage.stageWidth;
         let stageH = this.stage.stageHeight;
         this.width = stageW;
-        this.height = 68;
+        this.height = 108;
 
         this.title = new egret.TextField();
         this.title.textColor = 0xffffff;
         this.title.textAlign = "center";
-        this.title.text = "洋葱试炼场";
+        this.title.text = this.titleText;
         this.title.size = 32;
         this.title.x = (stageW/2) - 100;
         this.title.y = 68;
         this.title.width = 200;
-        this.title.height = 44;
+        this.title.height = 40;
         this.addChild(this.title);
 
         this.backBtn = new egret.Bitmap();
