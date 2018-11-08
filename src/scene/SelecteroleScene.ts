@@ -153,6 +153,7 @@ class SelecteroleScene extends egret.DisplayObjectContainer implements BPNavigat
 
     private onstartBtnClick() {
         console.log('start')
+        this.navigator.push(new BattleMatchScene())
     }
 
     private handleSelectRole (index: number) {
