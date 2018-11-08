@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="Fighting" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<w:Config id="166df2c0ebd"/>
-	<e:Group width="750" height="120" x="0" y="20" anchorOffsetX="0" anchorOffsetY="0">
-		<e:Rect height="120" y="6" width="375" anchorOffsetX="0" anchorOffsetY="0" fillColor="0x6552e6" strokeColor="0x7d5bd3" strokeWeight="12" ellipseWidth="120" ellipseHeight="120" x="-23"/>
-		<e:Rect height="120" y="0" width="375" anchorOffsetX="0" anchorOffsetY="0" fillColor="0x6552E6" strokeColor="0x7D5BD3" strokeWeight="12" ellipseWidth="120" ellipseHeight="120" scaleX="1" scaleY="1" x="398"/>
+	<e:Group width="352" height="144" x="0" y="20" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Rect width="400" height="144" x="-48" y="0" anchorOffsetX="0" anchorOffsetY="0" ellipseWidth="144" ellipseHeight="0" fillColor="0x7d5bd3"/>
+		<e:Rect width="400" height="120" x="-63.4" y="11.44" anchorOffsetX="0" anchorOffsetY="0" fillColor="0x6552e6" ellipseWidth="120" ellipseHeight="0"/>
 		<e:layout>
 			<e:BasicLayout/>
 		</e:layout>
 	</e:Group>
+	<e:Group width="352" height="144" x="10" y="30" anchorOffsetX="0" anchorOffsetY="0">
+		<e:layout>
+		<e:BasicLayout/>
+		</e:layout>
+	</e:Group>
+	<e:Rect width="400" height="120" x="442" y="169" anchorOffsetX="0" anchorOffsetY="0" fillColor="0x6552E6" ellipseWidth="120" ellipseHeight="0"/>
+	<e:Rect width="400" height="144" x="365" y="239" anchorOffsetX="0" anchorOffsetY="0" ellipseWidth="144" ellipseHeight="0" fillColor="0x7D5BD3"/>
     
 </e:Skin>
