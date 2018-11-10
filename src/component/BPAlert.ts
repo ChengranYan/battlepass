@@ -67,9 +67,9 @@ class BPAlert extends egret.EventDispatcher {
         
     }
 
-    public dismiss() {
-        let tw = egret.Tween.get(this.content);
-        tw.to({scaleX: 0, scaleY: 0}, 500, egret.Ease.backIn).call(() => {
+    public dismiss(animate: boolean = true) {
+
+        let remove = () => {
             if (this.container.contains(this.content)) {
                 this.container.removeChild(this.content);
             }
@@ -77,7 +77,14 @@ class BPAlert extends egret.EventDispatcher {
                 this.container.removeChild(this.backgroundMask);
             }
             this.dispatchEvent(new AlertEvent());
-        });
+        };
+
+        if (animate) {
+            let tw = egret.Tween.get(this.content);
+            tw.to({scaleX: 0, scaleY: 0}, 500, egret.Ease.backIn).call(remove);
+        } else {
+            remove();
+        }
         if (this.timer) {
             this.timer.stop();
             this.timer = null;

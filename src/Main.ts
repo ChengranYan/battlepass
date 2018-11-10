@@ -125,7 +125,7 @@ class Main extends egret.DisplayObjectContainer {
         let startup = new Startup();
         let selectRoleScene = new SelecteroleScene();
         let battleMatchScene = new BattleMatchScene();
-        this.navigator = new BPNavigator(this.stage, selectRoleScene);
+        this.navigator = new BPNavigator(this.stage, startup);
     }
 
     /**

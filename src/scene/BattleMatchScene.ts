@@ -27,22 +27,22 @@ class BattleMatchScene extends egret.DisplayObjectContainer implements BPNavigat
         }
         this.addChild(navigationBar);
 
-        let windowHeight = stageH - 160 - 210;
+        let windowWidth = stageW * 0.55;
 
         let leftWindow = new egret.Bitmap();
         leftWindow.texture = RES.getRes("match_drawing_box_left_png")
-        let leftScaleModulus = windowHeight / leftWindow.height;
-        leftWindow.width = leftWindow.width / leftWindow.height * windowHeight;
-        leftWindow.height = windowHeight;
-        leftWindow.y = 160;
+        let leftScaleModulus = windowWidth / leftWindow.width;
+        leftWindow.height = leftWindow.height / leftWindow.width * windowWidth;
+        leftWindow.width = windowWidth;
+        leftWindow.y = Math.max((stageH - leftWindow.height - 160 - 100 - 150)/2, 0) + 160;
         leftWindow.x = -leftWindow.width; // 0
         this.addChild(leftWindow);
 
         let rightWindow = new egret.Bitmap();
         rightWindow.texture = RES.getRes("match_drawing_box_right_png")
-        rightWindow.width = rightWindow.width / rightWindow.height * windowHeight;
-        rightWindow.height = windowHeight;
-        rightWindow.y = 160;
+        rightWindow.height = rightWindow.height / rightWindow.width * windowWidth;
+        rightWindow.width = windowWidth;
+        rightWindow.y = Math.max((stageH - rightWindow.height - 160 - 100 - 150)/2, 0) + 160;
         rightWindow.x = stageW; // stageW - rightWindow.width;
         this.addChild(rightWindow);
 
@@ -89,7 +89,6 @@ class BattleMatchScene extends egret.DisplayObjectContainer implements BPNavigat
         this.waitingTimer.addEventListener(
                 egret.TimerEvent.TIMER,
                 () => {
-                    console.log('a');
                         if (flag == 0) {
                             matchingText.text = "正在寻找对战人...";
                             flag = 1;
@@ -159,25 +158,26 @@ class BattleMatchScene extends egret.DisplayObjectContainer implements BPNavigat
         vs.alpha = 0;
         this.addChild(vs);
 
-        egret.Tween.get(rightPlayer).wait(1000).call(() => {
+        egret.Tween.get(rightPlayer).wait(500).call(() => {
             egret.Tween.get(rightPlayer).to({x: stageW - rightPlayer.width}, 300, egret.Ease.backOut);
-            egret.Tween.get(rightWindow).wait(300).to({x: stageW - rightWindow.width}, 300, egret.Ease.backOut);
-            egret.Tween.get(rightGirl).wait(400).to({x: stageW + 50 - rightGirl.width / 2}, 300, egret.Ease.backOut);
-            egret.Tween.get(rightItem1).wait(400).to({x: stageW - rightItem1.width - 32}, 300, egret.Ease.backOut);
-            egret.Tween.get(rightItem2).wait(400).to({x: stageW - rightItem2.width - 32}, 300, egret.Ease.backOut);
+            egret.Tween.get(rightWindow).wait(200).to({x: stageW - rightWindow.width}, 300, egret.Ease.backOut);
+            egret.Tween.get(rightGirl).wait(350).to({x: stageW + 50 - rightGirl.width / 2}, 300, egret.Ease.backOut);
+            egret.Tween.get(rightItem1).wait(450).to({x: stageW - rightItem1.width - 32}, 300, egret.Ease.backOut);
+            egret.Tween.get(rightItem2).wait(550).to({x: stageW - rightItem2.width - 32}, 300, egret.Ease.backOut);
 
-            egret.Tween.get(leftWindow).wait(400).to({x: 0}, 300, egret.Ease.backOut);
-            egret.Tween.get(leftUnknown).wait(400).to({x: leftUnknown.width / 2}, 300, egret.Ease.backOut);
-            egret.Tween.get(matchingText).wait(400).to({x: 40}, 300, egret.Ease.backOut);
-        }).wait(3000).call(() => {
-            egret.Tween.get(leftUnknown).wait(400).to({x: -(leftUnknown.width / 2)}, 300, egret.Ease.backOut);
-            egret.Tween.get(matchingText).wait(400).to({x: matchingTextX}, 300, egret.Ease.backOut);
+            egret.Tween.get(leftWindow).wait(630).to({x: 0}, 300, egret.Ease.backOut);
+            egret.Tween.get(leftUnknown).wait(800).to({x: leftUnknown.width / 2}, 300, egret.Ease.backOut);
+            egret.Tween.get(matchingText).wait(900).to({x: 40}, 300, egret.Ease.backOut);
         }).wait(4000).call(() => {
-            egret.Tween.get(leftPlayer).wait(400).to({x: 0}, 300, egret.Ease.backOut);
-            egret.Tween.get(leftGirl).wait(400).to({x: leftGirl.width / 2}, 300, egret.Ease.backOut);
-            egret.Tween.get(leftItem1).wait(400).to({x: 32}, 300, egret.Ease.backOut);
-            egret.Tween.get(leftItem2).wait(400).to({x: 32}, 300, egret.Ease.backOut);
-            egret.Tween.get(vs).wait(400).to({alpha: 1, scaleX: 1, scaleY: 1}, 300, egret.Ease.backOut);
+            egret.Tween.get(leftUnknown).wait(0).to({alpha: 0}, 300, egret.Ease.backOut);
+            egret.Tween.get(matchingText).wait(0).to({alpha: 0}, 300, egret.Ease.backOut);
+
+            egret.Tween.get(leftPlayer).wait(0).to({x: 0}, 300, egret.Ease.backOut);
+            egret.Tween.get(leftGirl).wait(150).to({x: leftGirl.width / 2}, 300, egret.Ease.backOut);
+            egret.Tween.get(leftItem1).wait(250).to({x: 32}, 300, egret.Ease.backOut);
+            egret.Tween.get(leftItem2).wait(350).to({x: 32}, 300, egret.Ease.backOut);
+
+            egret.Tween.get(vs).wait(800).to({alpha: 1, scaleX: 1, scaleY: 1}, 300, egret.Ease.backOut);
         });
 
         

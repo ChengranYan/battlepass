@@ -202,7 +202,7 @@ class NewSeasonView extends egret.DisplayObjectContainer {
         confirm.y = content.height;
         this.addChild(confirm);
         confirm.touchEnabled = true;
-        confirm.addEventListener(egret.TouchEvent.TOUCH_TAP, (event) => {this.dispatchEvent(event)}, this);
+        // confirm.addEventListener(egret.TouchEvent.TOUCH_TAP, (event) => {this.dispatchEvent(event)}, this);
 
         let tips = new egret.Bitmap();
         tips.texture = RES.getRes("new_season_tips_png");
@@ -215,7 +215,7 @@ class NewSeasonView extends egret.DisplayObjectContainer {
         this.addChild(tips);
 
         let tw = egret.Tween.get(tips, {loop: true});
-        tw.to({y: tips.y - 50}, 1000, egret.Ease.bounceInOut).to({y: tips.y}, 1000, egret.Ease.bounceInOut);
+        tw.to({y: tips.y - 50}, 1000).to({y: tips.y}, 1000);
 
 
     }
