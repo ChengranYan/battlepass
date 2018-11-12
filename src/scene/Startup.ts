@@ -117,7 +117,8 @@ class Startup extends utils.Scene implements BPNavigatorAware {
         console.log("跳转准备阶段", this.navigator);
         // let settlementScene = new SettlementScene(true, 1);
         let selecteroleScene = new SelecteroleScene();
-        this.navigator.push(selecteroleScene);
+        utils.App.pushScene(selecteroleScene);
+        // this.navigator.push(selecteroleScene);
     }
 
     private enterOfflineMode() {

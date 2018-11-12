@@ -1,4 +1,4 @@
-class BattleMatchScene extends egret.DisplayObjectContainer implements BPNavigatorAware {
+class BattleMatchScene extends utils.Scene implements BPNavigatorAware {
 
     private waitingTimer: egret.Timer;
 
@@ -10,12 +10,20 @@ class BattleMatchScene extends egret.DisplayObjectContainer implements BPNavigat
 
     public constructor() {
         super();
-        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
+        // this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
         this.addEventListener(egret.Event.REMOVED_FROM_STAGE, () => {this.waitingTimer.stop();this.waitingTimer = null;}, this);
     }
 
-    private onAddToStage(event: egret.Event) {
+    onAddStage () {
         this.createItems();
+    }
+
+    onRemoveStage () {
+
+    }
+
+    private onAddToStage(event: egret.Event) {
+        
     }
 
     public createItems() {
@@ -23,7 +31,8 @@ class BattleMatchScene extends egret.DisplayObjectContainer implements BPNavigat
         let stageH = this.stage.stageHeight;
         let navigationBar = new NavigationBar("正在匹配");
         navigationBar.onBackDidClick = () => {
-            this.navigator.pop();
+            // this.navigator.pop();
+            utils.App.popScene();
         }
         this.addChild(navigationBar);
 

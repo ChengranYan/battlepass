@@ -379,12 +379,147 @@
 			"name": "new_season_tips_png",
 			"type": "image",
 			"url": "assets/battlepass/startup/new_season_tips.png"
+		},
+		{
+			"name": "match_drawing_box_left2_png",
+			"type": "image",
+			"url": "assets/battlepass/battlematch/match_drawing_box_left.png"
+		},
+		{
+			"name": "match_drawing_box_right2_png",
+			"type": "image",
+			"url": "assets/battlepass/battlematch/match_drawing_box_right.png"
+		},
+		{
+			"name": "match_drawing_unknown2_png",
+			"type": "image",
+			"url": "assets/battlepass/battlematch/match_drawing_unknown.png"
+		},
+		{
+			"name": "match_erect_drawing_012_png",
+			"type": "image",
+			"url": "assets/battlepass/battlematch/match_erect_drawing_01.png"
+		},
+		{
+			"name": "match_erect_drawing_022_png",
+			"type": "image",
+			"url": "assets/battlepass/battlematch/match_erect_drawing_02.png"
+		},
+		{
+			"name": "match_erect_drawing_032_png",
+			"type": "image",
+			"url": "assets/battlepass/battlematch/match_erect_drawing_03.png"
+		},
+		{
+			"name": "match_erect_drawing_042_png",
+			"type": "image",
+			"url": "assets/battlepass/battlematch/match_erect_drawing_04.png"
+		},
+		{
+			"name": "match_success_vs2_png",
+			"type": "image",
+			"url": "assets/battlepass/battlematch/match_success_vs.png"
+		},
+		{
+			"name": "avatar_drawing_012_png",
+			"type": "image",
+			"url": "assets/battlepass/selectrole/avatar_drawing_01.png"
+		},
+		{
+			"name": "avatar_drawing_022_png",
+			"type": "image",
+			"url": "assets/battlepass/selectrole/avatar_drawing_02.png"
+		},
+		{
+			"name": "avatar_drawing_032_png",
+			"type": "image",
+			"url": "assets/battlepass/selectrole/avatar_drawing_03.png"
+		},
+		{
+			"name": "avatar_drawing_042_png",
+			"type": "image",
+			"url": "assets/battlepass/selectrole/avatar_drawing_04.png"
+		},
+		{
+			"name": "button2_png",
+			"type": "image",
+			"url": "assets/battlepass/selectrole/button.png"
+		},
+		{
+			"name": "erect_drawing_012_png",
+			"type": "image",
+			"url": "assets/battlepass/selectrole/erect_drawing_01.png"
+		},
+		{
+			"name": "erect_drawing_022_png",
+			"type": "image",
+			"url": "assets/battlepass/selectrole/erect_drawing_02.png"
+		},
+		{
+			"name": "erect_drawing_032_png",
+			"type": "image",
+			"url": "assets/battlepass/selectrole/erect_drawing_03.png"
+		},
+		{
+			"name": "erect_drawing_042_png",
+			"type": "image",
+			"url": "assets/battlepass/selectrole/erect_drawing_04.png"
+		},
+		{
+			"name": "popup_view_tip2_png",
+			"type": "image",
+			"url": "assets/battlepass/selectrole/popup_view_tip.png"
+		},
+		{
+			"name": "prop_ink3_png",
+			"type": "image",
+			"url": "assets/battlepass/selectrole/prop_ink.png"
+		},
+		{
+			"name": "prop_practice3_png",
+			"type": "image",
+			"url": "assets/battlepass/selectrole/prop_practice.png"
+		},
+		{
+			"name": "prop_time3_png",
+			"type": "image",
+			"url": "assets/battlepass/selectrole/prop_time.png"
+		},
+		{
+			"name": "select_background2_png",
+			"type": "image",
+			"url": "assets/battlepass/selectrole/select_background.png"
+		},
+		{
+			"name": "selecterole_prop_clothing_text2_png",
+			"type": "image",
+			"url": "assets/battlepass/selectrole/selecterole_prop_clothing_text.png"
+		},
+		{
+			"name": "selecterole_rule_confirm2_png",
+			"type": "image",
+			"url": "assets/battlepass/selectrole/selecterole_rule_confirm.png"
+		},
+		{
+			"name": "mask2_png",
+			"type": "image",
+			"url": "assets/battlepass/startup/mask.png"
+		},
+		{
+			"name": "new_season_confirm2_png",
+			"type": "image",
+			"url": "assets/battlepass/startup/new_season_confirm.png"
+		},
+		{
+			"name": "new_season_tips2_png",
+			"type": "image",
+			"url": "assets/battlepass/startup/new_season_tips.png"
 		}
 	],
 	"groups": [
 		{
 			"name": "preload",
-			"keys": "app_bar_ic_back_png,background_png,match_drawing_box_left_png,match_drawing_box_right_png,match_drawing_unknown_png,match_erect_drawing_01_png,match_erect_drawing_02_png,match_erect_drawing_03_png,match_erect_drawing_04_png,match_success_vs_png,add_ten_points_png,battle_drawing_01_png,battle_drawing_02_png,battle_drawing_03_png,battle_drawing_04_png,dialog_box_left_png,dialog_box_right_png,fighting_bg_png,ic_practice_data_png,prop_ink_png,prop_practice_png,prop_text_png,prop_time_png,prop_unknown_png,score_0_png,score_1_png,score_2_png,score_3_png,score_4_png,score_5_png,score_6_png,score_7_png,score_8_png,score_9_png,text_point_png,avatar_drawing_01_png,avatar_drawing_02_png,avatar_drawing_03_png,avatar_drawing_04_png,button_png,erect_drawing_01_png,erect_drawing_02_png,erect_drawing_03_png,erect_drawing_04_png,popup_view_tip_png,prop_ink2_png,prop_practice2_png,prop_time2_png,select_background_png,selecterole_prop_clothing_text_png,selecterole_rule_confirm_png,back_to_main_png,drawing_01_png,drawing_02_png,drawing_03_png,drawing_04_png,ic_coins_png,ic_exp_png,more_reward_window_png,play_again_png,result_lose_png,result_win_png,reward_item_1_png,reward_item_2_png,reward_item_3_png,star_dark_png,star_light_png,coming_soon_png,entrance_1v1_png,entrance_solo_png,ic_boy_png,ic_girl_png,mask_png,new_popup_view_png,new_season_confirm_png,new_season_tips_png"
+			"keys": "app_bar_ic_back_png,background_png,match_drawing_box_left_png,match_drawing_box_right_png,match_drawing_unknown_png,match_erect_drawing_01_png,match_erect_drawing_02_png,match_erect_drawing_03_png,match_erect_drawing_04_png,match_success_vs_png,add_ten_points_png,battle_drawing_01_png,battle_drawing_02_png,battle_drawing_03_png,battle_drawing_04_png,dialog_box_left_png,dialog_box_right_png,fighting_bg_png,ic_practice_data_png,prop_ink_png,prop_practice_png,prop_text_png,prop_time_png,prop_unknown_png,score_0_png,score_1_png,score_2_png,score_3_png,score_4_png,score_5_png,score_6_png,score_7_png,score_8_png,score_9_png,text_point_png,avatar_drawing_01_png,avatar_drawing_02_png,avatar_drawing_03_png,avatar_drawing_04_png,button_png,erect_drawing_01_png,erect_drawing_02_png,erect_drawing_03_png,erect_drawing_04_png,popup_view_tip_png,prop_ink2_png,prop_practice2_png,prop_time2_png,select_background_png,selecterole_prop_clothing_text_png,selecterole_rule_confirm_png,back_to_main_png,drawing_01_png,drawing_02_png,drawing_03_png,drawing_04_png,ic_coins_png,ic_exp_png,more_reward_window_png,play_again_png,result_lose_png,result_win_png,reward_item_1_png,reward_item_2_png,reward_item_3_png,star_dark_png,star_light_png,coming_soon_png,entrance_1v1_png,entrance_solo_png,ic_boy_png,ic_girl_png,mask_png,new_popup_view_png,new_season_confirm_png,new_season_tips_png,match_drawing_box_left2_png,match_drawing_box_right2_png,match_drawing_unknown2_png,match_erect_drawing_012_png,match_erect_drawing_022_png,match_erect_drawing_032_png,match_erect_drawing_042_png,match_success_vs2_png,avatar_drawing_012_png,avatar_drawing_022_png,avatar_drawing_032_png,avatar_drawing_042_png,button2_png,erect_drawing_012_png,erect_drawing_022_png,erect_drawing_032_png,erect_drawing_042_png,popup_view_tip2_png,prop_ink3_png,prop_practice3_png,prop_time3_png,select_background2_png,selecterole_prop_clothing_text2_png,selecterole_rule_confirm2_png,mask2_png,new_season_confirm2_png,new_season_tips2_png"
 		}
 	]
 }

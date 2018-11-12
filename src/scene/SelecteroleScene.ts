@@ -1,5 +1,5 @@
 
-class SelecteroleScene extends egret.DisplayObjectContainer implements BPNavigatorAware {
+class SelecteroleScene extends utils.Scene implements BPNavigatorAware {
 
     private battleTipAlert: BPAlert;
     
@@ -15,15 +15,23 @@ class SelecteroleScene extends egret.DisplayObjectContainer implements BPNavigat
 
     public constructor() {
         super();
-        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
+        // this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
 
-    private onAddToStage(event: egret.Event) {
-       console.log('enter SelecteroleScene')
-       
+    onAddStage () {
         this.showBattleTips()
-        
     }
+
+    onRemoveStage () {
+
+    }
+
+    // private onAddToStage(event: egret.Event) {
+    //    console.log('enter SelecteroleScene')
+       
+    //     this.showBattleTips()
+        
+    // }
 
     private showBattleTips () {
         let content = new RuleDescriptionView();
@@ -127,7 +135,8 @@ class SelecteroleScene extends egret.DisplayObjectContainer implements BPNavigat
 
     private onstartBtnClick() {
         console.log('start')
-        this.navigator.push(new BattleMatchScene())
+        // this.navigator.push(new BattleMatchScene())
+        utils.App.pushScene(new BattleMatchScene())
     }
 
     private handleSelectRole (index: number) {
@@ -139,7 +148,8 @@ class SelecteroleScene extends egret.DisplayObjectContainer implements BPNavigat
     private backToMain() {
         //TODO 退出游戏
         console.log("backToMain")
-        this.navigator.pop();
+        utils.App.popScene();
+        // this.navigator.pop();
     }
 }
 
