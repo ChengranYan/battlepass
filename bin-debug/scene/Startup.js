@@ -11,19 +11,20 @@ r.prototype = e.prototype, t.prototype = new r();
 var Startup = (function (_super) {
     __extends(Startup, _super);
     function Startup() {
-        var _this = _super.call(this) || this;
-        _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
-        return _this;
+        return _super.call(this) || this;
+        // this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
     Startup.prototype.setNavigator = function (navigator) {
         this.navigator = navigator;
     };
-    Startup.prototype.onAddToStage = function (event) {
+    Startup.prototype.onAddStage = function () {
         var _this = this;
         this.createItems();
         var timer = new egret.Timer(500, 1);
         timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE, function () { _this.newSeasonAlert.present(); }, this);
         timer.start();
+    };
+    Startup.prototype.onRemoveStage = function () {
     };
     Startup.prototype.createItems = function () {
         var _this = this;
@@ -114,7 +115,7 @@ var Startup = (function (_super) {
         this.navigator.pop();
     };
     return Startup;
-}(egret.DisplayObjectContainer));
+}(utils.Scene));
 __reflect(Startup.prototype, "Startup", ["BPNavigatorAware", "egret.DisplayObject"]);
 var NicknameGender = (function (_super) {
     __extends(NicknameGender, _super);

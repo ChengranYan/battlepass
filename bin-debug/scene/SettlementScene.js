@@ -14,14 +14,16 @@ var SettlementScene = (function (_super) {
         var _this = _super.call(this) || this;
         _this._isWin = isWin;
         _this._girlNo = girlNo;
-        _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
         return _this;
+        // this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddStage, this);
     }
     SettlementScene.prototype.setNavigator = function (navigator) {
         this.navigator = navigator;
     };
-    SettlementScene.prototype.onAddToStage = function (event) {
+    SettlementScene.prototype.onAddStage = function () {
         this.createItems();
+    };
+    SettlementScene.prototype.onRemoveStage = function () {
     };
     SettlementScene.prototype.createItems = function () {
         var _this = this;
@@ -79,7 +81,7 @@ var SettlementScene = (function (_super) {
         this.navigator.push(startup);
     };
     return SettlementScene;
-}(egret.DisplayObjectContainer));
+}(utils.Scene));
 __reflect(SettlementScene.prototype, "SettlementScene", ["BPNavigatorAware", "egret.DisplayObject"]);
 var GameResult = (function (_super) {
     __extends(GameResult, _super);

@@ -68,6 +68,10 @@ class Main extends eui.UILayer {
         try {
             this.loadingView = new LoadingUI();
             this.stage.addChild(this.loadingView);
+            // 注入自定义的素材解析器
+            let assetAdapter = new AssetAdapter();
+            egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
+            egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
             await RES.loadConfig("resource/default.res.json", "resource/");
             // 加载 EUI Theme
             await new eui.Theme("resource/default.thm.json", this.stage);
@@ -86,12 +90,12 @@ class Main extends eui.UILayer {
      * Create a game scene
      */
     private createGameScene() {
-        let bg = this.createBitmapByName("background_png");
-        this.addChild(bg);
-        let stageW = this.stage.stageWidth;
-        let stageH = this.stage.stageHeight;
-        bg.width = stageW;
-        bg.height = stageH;
+        // let bg = this.createBitmapByName("background_png");
+        // this.addChild(bg);
+        // let stageW = this.stage.stageWidth;
+        // let stageH = this.stage.stageHeight;
+        // bg.width = stageW;
+        // bg.height = stageH;
 
         utils.App.init(this)
         // 启动scene

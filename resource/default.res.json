@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "background_png,app_bar_ic_back_png,back_to_main_png,ic_coins_png,ic_exp_png,play_again_png,result_lose_png,result_win_png,star_dark_png,star_light_png,more_reward_window_png,reward_item_1_png,reward_item_2_png,reward_item_3_png,drawing_01_png,drawing_02_png,drawing_03_png,drawing_04_png,entrance_1v1_png,entrance_solo_png,ic_boy_png,ic_girl_png,receive_battle_pass_png,new_popup_view_png,hint_into_season_png,coming_soon_png,drawing_012_png,back_to_main2_png,drawing_022_png,drawing_032_png,drawing_042_png,ic_coins2_png,ic_exp2_png,more_reward_window2_png,play_again2_png,result_lose2_png,result_win2_png,reward_item_12_png,reward_item_22_png,reward_item_32_png,star_dark2_png,star_light2_png,coming_soon2_png,entrance_1v12_png,entrance_solo2_png,hint_into_season2_png,ic_boy2_png,ic_girl2_png,new_popup_view2_png,receive_battle_pass2_png",
+			"keys": "background_png,app_bar_ic_back_png,back_to_main_png,ic_coins_png,ic_exp_png,play_again_png,result_lose_png,result_win_png,star_dark_png,star_light_png,more_reward_window_png,reward_item_1_png,reward_item_2_png,reward_item_3_png,drawing_01_png,drawing_02_png,drawing_03_png,drawing_04_png,entrance_1v1_png,entrance_solo_png,ic_boy_png,ic_girl_png,receive_battle_pass_png,new_popup_view_png,hint_into_season_png,coming_soon_png,drawing_012_png,back_to_main2_png,drawing_022_png,drawing_032_png,drawing_042_png,ic_coins2_png,ic_exp2_png,more_reward_window2_png,play_again2_png,result_lose2_png,result_win2_png,reward_item_12_png,reward_item_22_png,reward_item_32_png,star_dark2_png,star_light2_png,coming_soon2_png,entrance_1v12_png,entrance_solo2_png,hint_into_season2_png,ic_boy2_png,ic_girl2_png,new_popup_view2_png,receive_battle_pass2_png,battle_drawing_01_png,battle_drawing_02_png,battle_drawing_03_png,battle_drawing_04_png,prop_ink_png,prop_practice_png,prop_text_png,prop_time_png,prop_unknown_png,score_0_png,score_1_png,score_2_png,score_3_png,score_5_png,score_6_png,score_4_png,score_7_png,score_8_png,score_9_png,text_point_png,fighting_bg_png,dialog_box_right_png,dialog_box_left_png,add_ten_points_png,ic_practice_data_png",
 			"name": "preload"
 		}
 	],
@@ -132,129 +132,254 @@
 			"name": "hint_into_season_png"
 		},
 		{
-			"name": "coming_soon_png",
+			"url": "assets/battlepass/startup/coming_soon.png",
 			"type": "image",
-			"url": "assets/battlepass/startup/coming_soon.png"
+			"name": "coming_soon_png"
 		},
 		{
-			"name": "drawing_012_png",
+			"url": "assets/battlepass/settlement/drawing_01.png",
 			"type": "image",
-			"url": "assets/battlepass/settlement/drawing_01.png"
+			"name": "drawing_012_png"
 		},
 		{
-			"name": "back_to_main2_png",
+			"url": "assets/battlepass/settlement/back_to_main.png",
 			"type": "image",
-			"url": "assets/battlepass/settlement/back_to_main.png"
+			"name": "back_to_main2_png"
 		},
 		{
-			"name": "drawing_022_png",
+			"url": "assets/battlepass/settlement/drawing_02.png",
 			"type": "image",
-			"url": "assets/battlepass/settlement/drawing_02.png"
+			"name": "drawing_022_png"
 		},
 		{
-			"name": "drawing_032_png",
+			"url": "assets/battlepass/settlement/drawing_03.png",
 			"type": "image",
-			"url": "assets/battlepass/settlement/drawing_03.png"
+			"name": "drawing_032_png"
 		},
 		{
-			"name": "drawing_042_png",
+			"url": "assets/battlepass/settlement/drawing_04.png",
 			"type": "image",
-			"url": "assets/battlepass/settlement/drawing_04.png"
+			"name": "drawing_042_png"
 		},
 		{
-			"name": "ic_coins2_png",
+			"url": "assets/battlepass/settlement/ic_coins.png",
 			"type": "image",
-			"url": "assets/battlepass/settlement/ic_coins.png"
+			"name": "ic_coins2_png"
 		},
 		{
-			"name": "ic_exp2_png",
+			"url": "assets/battlepass/settlement/ic_exp.png",
 			"type": "image",
-			"url": "assets/battlepass/settlement/ic_exp.png"
+			"name": "ic_exp2_png"
 		},
 		{
-			"name": "more_reward_window2_png",
+			"url": "assets/battlepass/settlement/more_reward_window.png",
 			"type": "image",
-			"url": "assets/battlepass/settlement/more_reward_window.png"
+			"name": "more_reward_window2_png"
 		},
 		{
-			"name": "play_again2_png",
+			"url": "assets/battlepass/settlement/play_again.png",
 			"type": "image",
-			"url": "assets/battlepass/settlement/play_again.png"
+			"name": "play_again2_png"
 		},
 		{
-			"name": "result_lose2_png",
+			"url": "assets/battlepass/settlement/result_lose.png",
 			"type": "image",
-			"url": "assets/battlepass/settlement/result_lose.png"
+			"name": "result_lose2_png"
 		},
 		{
-			"name": "result_win2_png",
+			"url": "assets/battlepass/settlement/result_win.png",
 			"type": "image",
-			"url": "assets/battlepass/settlement/result_win.png"
+			"name": "result_win2_png"
 		},
 		{
-			"name": "reward_item_12_png",
+			"url": "assets/battlepass/settlement/reward_item_1.png",
 			"type": "image",
-			"url": "assets/battlepass/settlement/reward_item_1.png"
+			"name": "reward_item_12_png"
 		},
 		{
-			"name": "reward_item_22_png",
+			"url": "assets/battlepass/settlement/reward_item_2.png",
 			"type": "image",
-			"url": "assets/battlepass/settlement/reward_item_2.png"
+			"name": "reward_item_22_png"
 		},
 		{
-			"name": "reward_item_32_png",
+			"url": "assets/battlepass/settlement/reward_item_3.png",
 			"type": "image",
-			"url": "assets/battlepass/settlement/reward_item_3.png"
+			"name": "reward_item_32_png"
 		},
 		{
-			"name": "star_dark2_png",
+			"url": "assets/battlepass/settlement/star_dark.png",
 			"type": "image",
-			"url": "assets/battlepass/settlement/star_dark.png"
+			"name": "star_dark2_png"
 		},
 		{
-			"name": "star_light2_png",
+			"url": "assets/battlepass/settlement/star_light.png",
 			"type": "image",
-			"url": "assets/battlepass/settlement/star_light.png"
+			"name": "star_light2_png"
 		},
 		{
-			"name": "coming_soon2_png",
+			"url": "assets/battlepass/startup/coming_soon.png",
 			"type": "image",
-			"url": "assets/battlepass/startup/coming_soon.png"
+			"name": "coming_soon2_png"
 		},
 		{
-			"name": "entrance_1v12_png",
+			"url": "assets/battlepass/startup/entrance_1v1.png",
 			"type": "image",
-			"url": "assets/battlepass/startup/entrance_1v1.png"
+			"name": "entrance_1v12_png"
 		},
 		{
-			"name": "entrance_solo2_png",
+			"url": "assets/battlepass/startup/entrance_solo.png",
 			"type": "image",
-			"url": "assets/battlepass/startup/entrance_solo.png"
+			"name": "entrance_solo2_png"
 		},
 		{
-			"name": "hint_into_season2_png",
+			"url": "assets/battlepass/startup/hint_into_season.png",
 			"type": "image",
-			"url": "assets/battlepass/startup/hint_into_season.png"
+			"name": "hint_into_season2_png"
 		},
 		{
-			"name": "ic_boy2_png",
+			"url": "assets/battlepass/startup/ic_boy.png",
 			"type": "image",
-			"url": "assets/battlepass/startup/ic_boy.png"
+			"name": "ic_boy2_png"
 		},
 		{
-			"name": "ic_girl2_png",
+			"url": "assets/battlepass/startup/ic_girl.png",
 			"type": "image",
-			"url": "assets/battlepass/startup/ic_girl.png"
+			"name": "ic_girl2_png"
 		},
 		{
-			"name": "new_popup_view2_png",
+			"url": "assets/battlepass/startup/new_popup_view.png",
 			"type": "image",
-			"url": "assets/battlepass/startup/new_popup_view.png"
+			"name": "new_popup_view2_png"
 		},
 		{
-			"name": "receive_battle_pass2_png",
+			"url": "assets/battlepass/startup/receive_battle_pass.png",
 			"type": "image",
-			"url": "assets/battlepass/startup/receive_battle_pass.png"
+			"name": "receive_battle_pass2_png"
+		},
+		{
+			"name": "battle_drawing_01_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/battle_drawing_01.png"
+		},
+		{
+			"name": "battle_drawing_02_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/battle_drawing_02.png"
+		},
+		{
+			"name": "battle_drawing_03_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/battle_drawing_03.png"
+		},
+		{
+			"name": "battle_drawing_04_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/battle_drawing_04.png"
+		},
+		{
+			"name": "prop_ink_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_ink.png"
+		},
+		{
+			"name": "prop_practice_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_practice.png"
+		},
+		{
+			"name": "prop_text_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_text.png"
+		},
+		{
+			"name": "prop_time_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_time.png"
+		},
+		{
+			"name": "prop_unknown_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_unknown.png"
+		},
+		{
+			"name": "score_0_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/score_0.png"
+		},
+		{
+			"name": "score_1_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/score_1.png"
+		},
+		{
+			"name": "score_2_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/score_2.png"
+		},
+		{
+			"name": "score_3_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/score_3.png"
+		},
+		{
+			"name": "score_5_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/score_5.png"
+		},
+		{
+			"name": "score_6_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/score_6.png"
+		},
+		{
+			"name": "score_4_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/score_4.png"
+		},
+		{
+			"name": "score_7_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/score_7.png"
+		},
+		{
+			"name": "score_8_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/score_8.png"
+		},
+		{
+			"name": "score_9_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/score_9.png"
+		},
+		{
+			"name": "text_point_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/text_point.png"
+		},
+		{
+			"name": "fighting_bg_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/fighting_bg.png"
+		},
+		{
+			"name": "dialog_box_right_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/dialog_box_right.png"
+		},
+		{
+			"name": "dialog_box_left_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/dialog_box_left.png"
+		},
+		{
+			"name": "add_ten_points_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/add_ten_points.png"
+		},
+		{
+			"name": "ic_practice_data_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/ic_practice_data.png"
 		}
 	]
 }

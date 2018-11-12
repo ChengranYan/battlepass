@@ -1,8 +1,8 @@
 var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
-var uitls;
-(function (uitls) {
+var utils;
+(function (utils) {
     /**
      * Pub/Sub
      */
@@ -44,6 +44,6 @@ var uitls;
         };
         return Emitter;
     }());
-    uitls.Emitter = Emitter;
-    __reflect(Emitter.prototype, "uitls.Emitter");
-})(uitls || (uitls = {}));
+    utils.Emitter = Emitter;
+    __reflect(Emitter.prototype, "utils.Emitter");
+})(utils || (utils = {}));

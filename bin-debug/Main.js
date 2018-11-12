@@ -75,10 +75,10 @@ var Main = (function (_super) {
     __extends(Main, _super);
     function Main() {
         var _this = _super.call(this) || this;
-        _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
+        _this.addEventListener(egret.Event.ADDED_TO_STAGE, _this.onAddStage, _this);
         return _this;
     }
-    Main.prototype.onAddToStage = function (event) {
+    Main.prototype.onAddStage = function (event) {
         egret.lifecycle.addLifecycleListener(function (context) {
             // custom lifecycle plugin
             context.onUpdate = function () {
@@ -96,12 +96,23 @@ var Main = (function (_super) {
     };
     Main.prototype.runGame = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var userInfo;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.loadResource()];
                     case 1:
                         _a.sent();
                         this.createGameScene();
+                        // const result = await RES.getResAsync("description_json")
+                        // 小游戏登录 & 获取用户信息
+                        return [4 /*yield*/, platform.login()];
+                    case 2:
+                        // const result = await RES.getResAsync("description_json")
+                        // 小游戏登录 & 获取用户信息
+                        _a.sent();
+                        return [4 /*yield*/, platform.getUserInfo()];
+                    case 3:
+                        userInfo = _a.sent();
                         return [2 /*return*/];
                 }
             });
@@ -109,26 +120,34 @@ var Main = (function (_super) {
     };
     Main.prototype.loadResource = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var loadingView, e_1;
+            var assetAdapter, e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 3, , 4]);
-                        loadingView = new LoadingUI();
-                        this.stage.addChild(loadingView);
+                        _a.trys.push([0, 4, , 5]);
+                        this.loadingView = new LoadingUI();
+                        this.stage.addChild(this.loadingView);
+                        assetAdapter = new AssetAdapter();
+                        egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
+                        egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
                         return [4 /*yield*/, RES.loadConfig("resource/default.res.json", "resource/")];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, RES.loadGroup("preload", 0, loadingView)];
+                        // 加载 EUI Theme
+                        return [4 /*yield*/, new eui.Theme("resource/default.thm.json", this.stage)];
                     case 2:
+                        // 加载 EUI Theme
                         _a.sent();
-                        this.stage.removeChild(loadingView);
-                        return [3 /*break*/, 4];
+                        return [4 /*yield*/, RES.loadGroup("preload", 0, this.loadingView)];
                     case 3:
+                        _a.sent();
+                        this.stage.removeChild(this.loadingView);
+                        return [3 /*break*/, 5];
+                    case 4:
                         e_1 = _a.sent();
                         console.error(e_1);
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
                 }
             });
         });
@@ -138,53 +157,24 @@ var Main = (function (_super) {
      * Create a game scene
      */
     Main.prototype.createGameScene = function () {
-        var bg = this.createBitmapByName("background_png");
-        this.addChild(bg);
-        var stageW = this.stage.stageWidth;
-        var stageH = this.stage.stageHeight;
-        bg.width = stageW;
-        bg.height = stageH;
-        // let topMask = new egret.Shape();
-        // topMask.graphics.beginFill(0x000000, 0.5);
-        // topMask.graphics.drawRect(0, 0, stageW, 172);
-        // topMask.graphics.endFill();
-        // topMask.y = 33;
-        // this.addChild(topMask);
-        // let icon = this.createBitmapByName("egret_icon_png");
-        // this.addChild(icon);
-        // icon.x = 26;
-        // icon.y = 33;
-        // let line = new egret.Shape();
-        // line.graphics.lineStyle(2, 0xffffff);
-        // line.graphics.moveTo(0, 0);
-        // line.graphics.lineTo(0, 117);
-        // line.graphics.endFill();
-        // line.x = 172;
-        // line.y = 61;
-        // this.addChild(line);
-        var colorLabel = new egret.TextField();
-        colorLabel.textColor = 0xffffff;
-        colorLabel.width = stageW;
-        colorLabel.textAlign = "center";
-        colorLabel.text = "洋葱试炼场";
-        colorLabel.size = 32;
-        colorLabel.x = 0;
-        colorLabel.y = 68;
-        this.addChild(colorLabel);
-        // let textfield = new egret.TextField();
-        // this.addChild(textfield);
-        // textfield.alpha = 0;
-        // textfield.width = stageW - 172;
-        // textfield.textAlign = egret.HorizontalAlign.CENTER;
-        // textfield.size = 24;
-        // textfield.textColor = 0xffffff;
-        // textfield.x = 172;
-        // textfield.y = 135;
-        // this.textfield = textfield;
-        var settlementScene = new SettlementScene(true, 1);
+        // let bg = this.createBitmapByName("background_png");
+        // this.addChild(bg);
+        // let stageW = this.stage.stageWidth;
+        // let stageH = this.stage.stageHeight;
+        // bg.width = stageW;
+        // bg.height = stageH;
+        utils.App.init(this);
+        // 启动scene
         var startup = new Startup();
+        // 对战scene
+        var fighting = new FightingScene();
+        // 结算scene
+        var settlementScene = new SettlementScene(true, 1);
+        // utils.App.pushScene(startup);
+        // utils.App.pushScene(settlementScene);
+        utils.App.pushScene(fighting);
         // this.addChild(startup);
-        this.navigator = new BPNavigator(this.stage, startup);
+        // this.navigator = new BPNavigator(this.stage, startup);
     };
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
@@ -196,33 +186,6 @@ var Main = (function (_super) {
         result.texture = texture;
         return result;
     };
-    /**
-     * 描述文件加载成功，开始播放动画
-     * Description file loading is successful, start to play the animation
-     */
-    Main.prototype.startAnimation = function (result) {
-        var _this = this;
-        var parser = new egret.HtmlTextParser();
-        var textflowArr = result.map(function (text) { return parser.parse(text); });
-        var textfield = this.textfield;
-        var count = -1;
-        var change = function () {
-            count++;
-            if (count >= textflowArr.length) {
-                count = 0;
-            }
-            var textFlow = textflowArr[count];
-            // 切换描述内容
-            // Switch to described content
-            textfield.textFlow = textFlow;
-            var tw = egret.Tween.get(textfield);
-            tw.to({ "alpha": 1 }, 200);
-            tw.wait(2000);
-            tw.to({ "alpha": 0 }, 200);
-            tw.call(change, _this);
-        };
-        change();
-    };
     return Main;
-}(egret.DisplayObjectContainer));
+}(eui.UILayer));
 __reflect(Main.prototype, "Main");
