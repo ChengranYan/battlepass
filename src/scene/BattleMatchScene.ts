@@ -63,7 +63,7 @@ class BattleMatchScene extends egret.DisplayObjectContainer implements BPNavigat
         leftGirl.height = leftGirl.height * leftScaleModulus;
         leftGirl.anchorOffsetX = leftGirl.width / 2;
         leftGirl.anchorOffsetY = leftGirl.height / 2;
-        leftGirl.x = -(leftGirl.width / 2); // leftGirl.width / 2;
+        leftGirl.x = -(leftGirl.width / 2) - 40; // leftGirl.width / 2;
         leftGirl.y = leftWindow.y + leftWindow.height / 2;
         this.addChild(leftGirl);
 
@@ -173,7 +173,7 @@ class BattleMatchScene extends egret.DisplayObjectContainer implements BPNavigat
             egret.Tween.get(matchingText).wait(0).to({alpha: 0}, 300, egret.Ease.backOut);
 
             egret.Tween.get(leftPlayer).wait(0).to({x: 0}, 300, egret.Ease.backOut);
-            egret.Tween.get(leftGirl).wait(150).to({x: leftGirl.width / 2}, 300, egret.Ease.backOut);
+            egret.Tween.get(leftGirl).wait(150).to({x: (leftGirl.width / 2)-40}, 300, egret.Ease.backOut);
             egret.Tween.get(leftItem1).wait(250).to({x: 32}, 300, egret.Ease.backOut);
             egret.Tween.get(leftItem2).wait(350).to({x: 32}, 300, egret.Ease.backOut);
 

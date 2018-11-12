@@ -8,8 +8,17 @@
 		"libs/modules/promise/promise.js"
 	],
 	"game": [
+		"bin-debug/component/NavigationBar.js",
 		"bin-debug/LoadingUI.js",
+		"bin-debug/Platform.js",
+		"bin-debug/component/BPAlert.js",
+		"bin-debug/component/BPNavigator.js",
+		"bin-debug/component/LevelStar.js",
 		"bin-debug/Main.js",
-		"bin-debug/Platform.js"
+		"bin-debug/scene/BattleMatchScene.js",
+		"bin-debug/scene/SelecteroleScene.js",
+		"bin-debug/scene/SettlementScene.js",
+		"bin-debug/scene/Startup.js",
+		"bin-debug/scene/Template.js"
 	]
 }
