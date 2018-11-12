@@ -1,5 +1,5 @@
 
-class Startup extends egret.DisplayObjectContainer implements BPNavigatorAware {
+class Startup extends utils.Scene implements BPNavigatorAware {
 
     private comingSoonAlert: BPAlert;
     private newSeasonAlert: BPAlert;
@@ -15,16 +15,22 @@ class Startup extends egret.DisplayObjectContainer implements BPNavigatorAware {
 
     public constructor() {
         super();
-        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
+        // this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
 
-    private onAddToStage(event: egret.Event) {
+    onAddStage() {
         this.createItems();
 
         var timer:egret.Timer = new egret.Timer(100,1);
         timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,() => {this.newSeasonAlert.present(false, false)},this);
         timer.start();
     }
+
+    onRemoveStage() {
+        
+    }
+
+
 
     private getCenterX(width:number) {
         let stageW = this.stage.stageWidth;

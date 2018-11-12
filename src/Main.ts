@@ -27,49 +27,41 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////
 
-class Main extends egret.DisplayObjectContainer {
+class Main extends eui.UILayer {
 
     private navigator: BPNavigator;
+    private loadingView: LoadingUI;
 
     public constructor() {
         super();
-        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
+        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddStage, this);
     }
 
-    private onAddToStage(event: egret.Event) {
+    private onAddStage(event: egret.Event) {
         egret.lifecycle.addLifecycleListener((context) => {
             // custom lifecycle plugin
-
             context.onUpdate = () => {
 
             }
         })
-
         egret.lifecycle.onPause = () => {
             egret.ticker.pause();
         }
-
         egret.lifecycle.onResume = () => {
             egret.ticker.resume();
         }
-
         this.runGame().catch(e => {
             console.log(e);
         })
-
-
-
     }
 
     private async runGame() {
         await this.loadResource()
         this.createGameScene();
         // const result = await RES.getResAsync("description_json")
-        // this.startAnimation(result);
-        // await platform.login();
-        // const userInfo = await platform.getUserInfo();
-        // console.log(userInfo);
-
+        // 小游戏登录 & 获取用户信息
+        await platform.login();
+        const userInfo = await platform.getUserInfo();
     }
 
     private async loadResource() {
@@ -78,9 +70,15 @@ class Main extends egret.DisplayObjectContainer {
             this.stage.addChild(loadingView);
             // egret.ImageLoader.crossOrigin = "anonymous";
             // await RES.loadConfig("http://192.168.3.103:5000/resource/default.res.json", "http://192.168.3.103:5000/resource/")
+            // 注入自定义的素材解析器
+            let assetAdapter = new AssetAdapter();
+            egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
+            egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
             await RES.loadConfig("resource/default.res.json", "resource/");
-            await RES.loadGroup("preload", 0, loadingView);
-            this.stage.removeChild(loadingView);
+            // 加载 EUI Theme
+            await new eui.Theme("resource/default.thm.json", this.stage);
+            await RES.loadGroup("preload", 0, this.loadingView);
+            this.stage.removeChild(this.loadingView);
         }
         catch (e) {
             console.error(e);
@@ -100,32 +98,24 @@ class Main extends egret.DisplayObjectContainer {
         let stageH = this.stage.stageHeight;
         bg.width = stageW;
         bg.height = stageH;
-        // let topMask = new egret.Shape();
-        // topMask.graphics.beginFill(0x000000, 0.5);
-        // topMask.graphics.drawRect(0, 0, stageW, 172);
-        // topMask.graphics.endFill();
-        // topMask.y = 33;
-        // this.addChild(topMask);
 
-        // let icon = this.createBitmapByName("egret_icon_png");
-        // this.addChild(icon);
-        // icon.x = 26;
-        // icon.y = 33;
+//        let settlementScene = new SettlementScene(true, 1);
+//        let startup = new Startup();
+//        let selectRoleScene = new SelecteroleScene();
+//        let battleMatchScene = new BattleMatchScene();
+//        this.navigator = new BPNavigator(this.stage, startup);
 
-        // let line = new egret.Shape();
-        // line.graphics.lineStyle(2, 0xffffff);
-        // line.graphics.moveTo(0, 0);
-        // line.graphics.lineTo(0, 117);
-        // line.graphics.endFill();
-        // line.x = 172;
-        // line.y = 61;
-        // this.addChild(line);
-
-        let settlementScene = new SettlementScene(true, 1);
+        utils.App.init(this)
+        // 启动scene
         let startup = new Startup();
-        let selectRoleScene = new SelecteroleScene();
-        let battleMatchScene = new BattleMatchScene();
-        this.navigator = new BPNavigator(this.stage, startup);
+        // 对战scene
+        let fighting = new FightingScene();
+        // 结算scene
+        let settlementScene = new SettlementScene(true, 1);
+        
+        // utils.App.pushScene(startup);
+        // utils.App.pushScene(settlementScene);
+        utils.App.pushScene(fighting);
     }
 
     /**

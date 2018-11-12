@@ -1,6 +1,6 @@
 
 
-class SettlementScene extends egret.DisplayObjectContainer implements BPNavigatorAware {
+class SettlementScene extends utils.Scene implements BPNavigatorAware {
 
     private _girl:egret.Bitmap;
     private _gameResult:egret.Bitmap;
@@ -17,11 +17,15 @@ class SettlementScene extends egret.DisplayObjectContainer implements BPNavigato
         super();
         this._isWin = isWin;
         this._girlNo = girlNo;
-        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
+        // this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddStage, this);
     }
 
-    private onAddToStage(event: egret.Event) {
+    public onAddStage() {
         this.createItems();
+    }
+
+    onRemoveStage () {
+
     }
 
     private createItems() {
