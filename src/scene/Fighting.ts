@@ -34,17 +34,34 @@ class FightingScene extends utils.Scene {
     public userProgressBar_left: eui.Image;
     // 右侧玩家的进度条
     public userProgressBar_rigth: eui.Image;
+    // 试题列表
+    private problems: Array<Problem>;
+    // 用户题目索引
+    private playerCurrentIndex: number;
+    // 用户当前题目内容
+    private problemContent: eui.Label;
+    // 选项们
+    private options: Array<eui.Label>;
+    private optionA: eui.Label;
+    private optionB: eui.Label;
+    private optionC: eui.Label;
+    private optionD: eui.Label;
 
     constructor () {
         super();
         // 设置 theme
         this.skinName = "Fighting";
+        // 初始化试题库
+        this.problems = Problems.randomProblems(10);
+        this.playerCurrentIndex = 0;
+        this.options = [this.optionA, this.optionB, this.optionC, this.optionD]
     }
     onAddStage() :void {
-        this.userAnswer_left = [0, 0, 0, 0, 0, 1, 1, 1, 1, 0];
-        this.userAnswer_right = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1];
+        this.userAnswer_left = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        this.userAnswer_right = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         this.registerEventListener();
         this.renderUserProgress();
+        this.renderProblems();
         this.renderUserState(this.userState_left, this.userAnswer_left);
         this.renderUserState(this.userState_right, this.userAnswer_right);
         this.userIcon_left.source = fooIcon        
@@ -67,12 +84,17 @@ class FightingScene extends utils.Scene {
         this.propInkBtn.addEventListener('touchTap', () => {
             console.log('墨汁！');
         }, this);
+        this.optionA.addEventListener('touchTap', this.optionClick.bind(this, 0), this);
+        this.optionB.addEventListener('touchTap', this.optionClick.bind(this, 1), this);
+        this.optionC.addEventListener('touchTap', this.optionClick.bind(this, 2), this);
+        this.optionD.addEventListener('touchTap', this.optionClick.bind(this, 3), this);
     }
 
     /**
      * 渲染用户答案
      */
     private renderUserState (stateComponent: eui.Group, stateArray: Array<number>) {
+        stateComponent.removeChildren();
         stateArray.forEach(x => {
             const item: eui.Rect = x
                 ? new eui.Rect(12, 20, 0x02EBA9)
@@ -90,6 +112,17 @@ class FightingScene extends utils.Scene {
         this.setUserProgress(this.userAnswer_right, this.userProgressBar_rigth, this.userProgressGroup_right);
     }
 
+    private renderProblems () {
+        const keys = ['A', 'B', 'C', 'D']
+        const index = this.playerCurrentIndex;
+        const currentProblem = this.problems[index];
+        const body =  index + 1 + '. ' + currentProblem.body
+        this.problemContent.text = body
+        currentProblem.choices.forEach((x, idx) => {
+            this.options[idx].text = `${keys[idx]}. ${x.body}`
+        })
+    }
+
     /**
      * 更新用户的答案
      */
@@ -105,5 +138,36 @@ class FightingScene extends utils.Scene {
         const totalCount = userAnswerArray.length
         const top = errorCount / totalCount * progressGroup.height
         progressBar.y = top
+    }
+
+    /**
+     * 
+     */
+    private optionClick (optionIndex: number) {
+        if (this.playerCurrentIndex >= this.problems.length) {
+            console.log('游戏已结束')
+            return
+        }
+        const index = this.playerCurrentIndex;
+        const currentProblem = this.problems[index];
+        const correct = currentProblem.choices[optionIndex].correct;
+        console.log('您的选项是：', currentProblem.choices[optionIndex].body, currentProblem.choices[optionIndex].correct)
+        if (correct) {
+            console.log('做对了')
+        } else {
+            console.log('做错了')
+        }
+        // 右侧是玩家自己
+        this.playerCurrentIndex = this.playerCurrentIndex + 1
+        this.setUserAnswerState(this.userAnswer_right, index, correct);
+        console.log(this.userAnswer_right);
+        this.setUserProgress(this.userAnswer_right, this.userProgressBar_rigth, this.userProgressGroup_right);
+        this.renderUserState(this.userState_right, this.userAnswer_right);
+        if (this.playerCurrentIndex >= this.problems.length) {
+            console.log('玩家做完啦！！！')
+        } else {
+            this.renderProblems()
+        }
+        
     }
 }
