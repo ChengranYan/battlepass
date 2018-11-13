@@ -43,7 +43,7 @@
 			<e:Image width="28" height="28" x="42" y="26" source="ic_practice_data_png"/>
 			<e:Group id="userState_right" width="150" height="22" x="90" y="28">
 				<e:layout>
-					<e:HorizontalLayout horizontalAlign="justify" gap="3"/>
+					<e:HorizontalLayout horizontalAlign="center" gap="3"/>
 				</e:layout>
 			</e:Group>
 			<e:layout>
@@ -84,10 +84,12 @@
 			<e:BasicLayout/>
 		</e:layout>
 	</e:Group>
-	<e:Group width="32" height="640" x="697" y="432">
+	<e:Group id="userProgressGroup_right" width="32" height="640" x="697" y="432" visible="true" scrollEnabled="true">
+		<e:Image id="userProgressBar_rigth" width="32" height="640" x="0" y="100" source="user_progress_png"/>
 		<e:Rect width="32" height="640" x="0" y="0" fillColor="0xffffff" fillAlpha="0.3" strokeColor="0xffffff" strokeWeight="4" ellipseWidth="32" scaleX="1" scaleY="1"/>
 	</e:Group>
-	<e:Group width="32" height="640" x="20" y="432">
+	<e:Group id="userProgressGroup_left" width="32" height="640" x="20" y="432" scrollEnabled="true">
+		<e:Image id="userProgressBar_left" width="32" height="640" x="0" y="0" source="user_progress_png"/>
 		<e:Rect width="32" height="640" x="0" y="0" fillColor="0xFFFFFF" fillAlpha="0.3" strokeColor="0xFFFFFF" strokeWeight="4" ellipseWidth="32" scaleX="1" scaleY="1"/>
 	</e:Group>
 	
