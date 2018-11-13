@@ -50,7 +50,7 @@ class LevelStar extends egret.DisplayObjectContainer {
 
 
     public startAnimate() {
-        egret.Tween.get(this.animateStar).to({scaleX: 1, scaleY: 1}, 300, egret.Ease.backIn);
+        egret.Tween.get(this.animateStar).wait(350).to({scaleX: 1, scaleY: 1}, 300, egret.Ease.backIn);
     }
 
 }

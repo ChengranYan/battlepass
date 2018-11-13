@@ -141,10 +141,10 @@ class Startup extends utils.Scene implements BPNavigatorAware {
 
     private startAnimation() {
         let offlineTw = egret.Tween.get(this.offlineMode, {loop: false});
-        offlineTw.to({x: this.getCenterX(this.offlineMode.width)}, 300);
+        offlineTw.wait(100).to({x: this.getCenterX(this.offlineMode.width)}, 300);
 
         let onlineTw = egret.Tween.get(this.onlineMode, {loop: false});
-        onlineTw.wait(250).to({x: this.getCenterX(this.onlineMode.width)}, 300);
+        onlineTw.wait(300).to({x: this.getCenterX(this.onlineMode.width)}, 300);
     }
 
 }

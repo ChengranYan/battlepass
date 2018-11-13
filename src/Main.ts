@@ -113,7 +113,7 @@ class Main extends eui.UILayer {
         // 结算scene
         let settlementScene = new SettlementScene(true, 1);
         
-        utils.App.pushScene(startup);
+        utils.App.pushScene(settlementScene);
         // utils.App.pushScene(settlementScene);
         // utils.App.pushScene(fighting);
     }

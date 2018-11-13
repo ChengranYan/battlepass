@@ -42,6 +42,7 @@ class SettlementScene extends utils.Scene implements BPNavigatorAware {
         girl.height /= 1.5;
         girl.x = -girl.width;
         girl.y = 200;
+        girl.alpha = 0;
         
 
         let gameResult = new GameResult(this._isWin);
@@ -52,6 +53,7 @@ class SettlementScene extends utils.Scene implements BPNavigatorAware {
         let moreReward = new MoreReward();
         moreReward.y = gameResult.y + gameResult.height + 40;
         moreReward.x = stageW;
+        moreReward.alpha = 0;
         this.addChild(moreReward);
 
 
@@ -60,6 +62,7 @@ class SettlementScene extends utils.Scene implements BPNavigatorAware {
         backBtn.texture = RES.getRes("back_to_main_png");
         backBtn.width /= 1.5;
         backBtn.height /= 1.5;
+        backBtn.alpha = 0;
         backBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.backToMain, this);
         
         let playAgainBtn = new egret.Bitmap();
@@ -67,6 +70,7 @@ class SettlementScene extends utils.Scene implements BPNavigatorAware {
         playAgainBtn.texture = RES.getRes("play_again_png");
         playAgainBtn.width /= 1.5;
         playAgainBtn.height /= 1.5;
+        playAgainBtn.alpha = 0;
         playAgainBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.playAgain, this);
 
         let space = (stageW - backBtn.width - playAgainBtn.width) / 3;
@@ -84,11 +88,11 @@ class SettlementScene extends utils.Scene implements BPNavigatorAware {
         timer.addEventListener(
                 egret.TimerEvent.TIMER_COMPLETE,
                 () => {
-                    egret.Tween.get(girl).to({x: 0}, 500, egret.Ease.bounceOut);
+                    egret.Tween.get(girl).to({x: 0, alpha: 1}, 500, egret.Ease.backOut);
                     gameResult.startAnimate();
-                    egret.Tween.get(moreReward).wait(500).to({x: stageW - moreReward.width}, 300);
-                    egret.Tween.get(backBtn).wait(500).to({x: space}, 300);
-                    egret.Tween.get(playAgainBtn).wait(500).to({x: space + space + backBtn.width}, 300);
+                    egret.Tween.get(moreReward).wait(700).to({x: stageW - moreReward.width, alpha: 1}, 300);
+                    egret.Tween.get(backBtn).wait(600).to({x: space, alpha: 1}, 300);
+                    egret.Tween.get(playAgainBtn).wait(650).to({x: space + space + backBtn.width, alpha: 1}, 300);
                 }
                 ,this);
         timer.start();
@@ -120,11 +124,12 @@ class GameResult extends egret.DisplayObjectContainer {
     private _coins:RewardItem;
 
     public startAnimate() {
-        egret.Tween.get(this._result).to({alpha: 1, x: this.getCenterX(this._result.width)}, 300, egret.Ease.bounceOut)
-        egret.Tween.get(this._level).wait(150).to({alpha: 1,x: this.getCenterX(this._level.width)}, 300)
-        egret.Tween.get(this._levelStar).wait(150).to({alpha: 1,x: this.getCenterX(this._levelStar.width)}, 300).call(() => this._levelStar.startAnimate())
-        egret.Tween.get(this._exp).wait(300).to({alpha: 1,x: this.getCenterX(this._exp.width)}, 300)
-        egret.Tween.get(this._coins).wait(450).to({alpha: 1,x: this.getCenterX(this._coins.width)}, 300)
+        egret.Tween.get(this._result).wait(100).to({alpha: 1, x: this.getCenterX(this._result.width)}, 300, egret.Ease.backOut)
+        egret.Tween.get(this._level).wait(200).to({alpha: 1,x: this.getCenterX(this._level.width)}, 300)
+        egret.Tween.get(this._levelStar).wait(200).to({alpha: 1,x: this.getCenterX(this._levelStar.width)}, 300)
+        this._levelStar.startAnimate()
+        egret.Tween.get(this._exp).wait(500).to({alpha: 1,x: this.getCenterX(this._exp.width)}, 300)
+        egret.Tween.get(this._coins).wait(600).to({alpha: 1,x: this.getCenterX(this._coins.width)}, 300)
     }
 
     public constructor(isWin:boolean) {
