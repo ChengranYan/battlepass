@@ -1,12 +1,6 @@
-class BattleMatchScene extends utils.Scene implements BPNavigatorAware {
+class BattleMatchScene extends utils.Scene {
 
     private waitingTimer: egret.Timer;
-
-    private navigator: BPNavigator;
-
-    public setNavigator(navigator: BPNavigator) {
-        this.navigator = navigator;
-    }
 
     public constructor() {
         super();
@@ -31,7 +25,6 @@ class BattleMatchScene extends utils.Scene implements BPNavigatorAware {
         let stageH = this.stage.stageHeight;
         let navigationBar = new NavigationBar("正在匹配");
         navigationBar.onBackDidClick = () => {
-            // this.navigator.pop();
             utils.App.popScene();
         }
         this.addChild(navigationBar);
@@ -187,11 +180,15 @@ class BattleMatchScene extends utils.Scene implements BPNavigatorAware {
             egret.Tween.get(leftItem2).wait(350).to({x: 32}, 300, egret.Ease.backOut);
 
             egret.Tween.get(vs).wait(800).to({alpha: 1, scaleX: 1, scaleY: 1}, 300, egret.Ease.backOut);
+        }).wait(3000).call(() => {
+            this.toFight();
         });
-
         
+    }
 
-        
+    private toFight() {
+        let fighting = new FightingScene();
+        utils.App.pushScene(fighting);
     }
 
 

@@ -171,11 +171,6 @@
 			"url": "assets/battlepass/fighting/score_9.png"
 		},
 		{
-			"name": "text_point_png",
-			"type": "image",
-			"url": "assets/battlepass/fighting/text_point.png"
-		},
-		{
 			"name": "avatar_drawing_01_png",
 			"type": "image",
 			"url": "assets/battlepass/selectrole/avatar_drawing_01.png"
@@ -514,12 +509,112 @@
 			"name": "new_season_tips2_png",
 			"type": "image",
 			"url": "assets/battlepass/startup/new_season_tips.png"
+		},
+		{
+			"name": "practise_false_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/practise_false.png"
+		},
+		{
+			"name": "practise_notdown_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/practise_notdown.png"
+		},
+		{
+			"name": "practise_right_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/practise_right.png"
+		},
+		{
+			"name": "score_unit_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/score_unit.png"
+		},
+		{
+			"name": "score_progress_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/score_progress.png"
+		},
+		{
+			"name": "fighting_go_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/fighting_go.png"
+		},
+		{
+			"name": "fighting_ready_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/fighting_ready.png"
+		},
+		{
+			"name": "prop_dialog_left_1_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_dialog_left_1.png"
+		},
+		{
+			"name": "prop_dialog_left_2_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_dialog_left_2.png"
+		},
+		{
+			"name": "prop_dialog_left_3_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_dialog_left_3.png"
+		},
+		{
+			"name": "prop_dialog_left_11_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_dialog_left_11.png"
+		},
+		{
+			"name": "prop_dialog_left_12_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_dialog_left_12.png"
+		},
+		{
+			"name": "prop_dialog_left_13_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_dialog_left_13.png"
+		},
+		{
+			"name": "prop_dialog_right_1_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_dialog_right_1.png"
+		},
+		{
+			"name": "prop_dialog_right_2_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_dialog_right_2.png"
+		},
+		{
+			"name": "prop_dialog_right_3_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_dialog_right_3.png"
+		},
+		{
+			"name": "prop_dialog_right_11_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_dialog_right_11.png"
+		},
+		{
+			"name": "prop_dialog_right_12_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_dialog_right_12.png"
+		},
+		{
+			"name": "prop_dialog_right_13_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/prop_dialog_right_13.png"
+		},
+		{
+			"name": "fighting_finish_png",
+			"type": "image",
+			"url": "assets/battlepass/fighting/fighting_finish.png"
 		}
 	],
 	"groups": [
 		{
 			"name": "preload",
-			"keys": "app_bar_ic_back_png,background_png,match_drawing_box_left_png,match_drawing_box_right_png,match_drawing_unknown_png,match_erect_drawing_01_png,match_erect_drawing_02_png,match_erect_drawing_03_png,match_erect_drawing_04_png,match_success_vs_png,add_ten_points_png,battle_drawing_01_png,battle_drawing_02_png,battle_drawing_03_png,battle_drawing_04_png,dialog_box_left_png,dialog_box_right_png,fighting_bg_png,ic_practice_data_png,prop_ink_png,prop_practice_png,prop_text_png,prop_time_png,prop_unknown_png,score_0_png,score_1_png,score_2_png,score_3_png,score_4_png,score_5_png,score_6_png,score_7_png,score_8_png,score_9_png,text_point_png,avatar_drawing_01_png,avatar_drawing_02_png,avatar_drawing_03_png,avatar_drawing_04_png,button_png,erect_drawing_01_png,erect_drawing_02_png,erect_drawing_03_png,erect_drawing_04_png,popup_view_tip_png,prop_ink2_png,prop_practice2_png,prop_time2_png,select_background_png,selecterole_prop_clothing_text_png,selecterole_rule_confirm_png,back_to_main_png,drawing_01_png,drawing_02_png,drawing_03_png,drawing_04_png,ic_coins_png,ic_exp_png,more_reward_window_png,play_again_png,result_lose_png,result_win_png,reward_item_1_png,reward_item_2_png,reward_item_3_png,star_dark_png,star_light_png,coming_soon_png,entrance_1v1_png,entrance_solo_png,ic_boy_png,ic_girl_png,mask_png,new_popup_view_png,new_season_confirm_png,new_season_tips_png,match_drawing_box_left2_png,match_drawing_box_right2_png,match_drawing_unknown2_png,match_erect_drawing_012_png,match_erect_drawing_022_png,match_erect_drawing_032_png,match_erect_drawing_042_png,match_success_vs2_png,avatar_drawing_012_png,avatar_drawing_022_png,avatar_drawing_032_png,avatar_drawing_042_png,button2_png,erect_drawing_012_png,erect_drawing_022_png,erect_drawing_032_png,erect_drawing_042_png,popup_view_tip2_png,prop_ink3_png,prop_practice3_png,prop_time3_png,select_background2_png,selecterole_prop_clothing_text2_png,selecterole_rule_confirm2_png,mask2_png,new_season_confirm2_png,new_season_tips2_png"
+			"keys": "app_bar_ic_back_png,background_png,match_drawing_box_left_png,match_drawing_box_right_png,match_drawing_unknown_png,match_erect_drawing_01_png,match_erect_drawing_02_png,match_erect_drawing_03_png,match_erect_drawing_04_png,match_success_vs_png,add_ten_points_png,battle_drawing_01_png,battle_drawing_02_png,battle_drawing_03_png,battle_drawing_04_png,dialog_box_left_png,dialog_box_right_png,fighting_bg_png,ic_practice_data_png,prop_ink_png,prop_practice_png,prop_text_png,prop_time_png,prop_unknown_png,score_0_png,score_1_png,score_2_png,score_3_png,score_4_png,score_5_png,score_6_png,score_7_png,score_8_png,score_9_png,avatar_drawing_01_png,avatar_drawing_02_png,avatar_drawing_03_png,avatar_drawing_04_png,button_png,erect_drawing_01_png,erect_drawing_02_png,erect_drawing_03_png,erect_drawing_04_png,popup_view_tip_png,prop_ink2_png,prop_practice2_png,prop_time2_png,select_background_png,selecterole_prop_clothing_text_png,selecterole_rule_confirm_png,back_to_main_png,drawing_01_png,drawing_02_png,drawing_03_png,drawing_04_png,ic_coins_png,ic_exp_png,more_reward_window_png,play_again_png,result_lose_png,result_win_png,reward_item_1_png,reward_item_2_png,reward_item_3_png,star_dark_png,star_light_png,coming_soon_png,entrance_1v1_png,entrance_solo_png,ic_boy_png,ic_girl_png,mask_png,new_popup_view_png,new_season_confirm_png,new_season_tips_png,match_drawing_box_left2_png,match_drawing_box_right2_png,match_drawing_unknown2_png,match_erect_drawing_012_png,match_erect_drawing_022_png,match_erect_drawing_032_png,match_erect_drawing_042_png,match_success_vs2_png,avatar_drawing_012_png,avatar_drawing_022_png,avatar_drawing_032_png,avatar_drawing_042_png,button2_png,erect_drawing_012_png,erect_drawing_022_png,erect_drawing_032_png,erect_drawing_042_png,popup_view_tip2_png,prop_ink3_png,prop_practice3_png,prop_time3_png,select_background2_png,selecterole_prop_clothing_text2_png,selecterole_rule_confirm2_png,mask2_png,new_season_confirm2_png,new_season_tips2_png,practise_false_png,practise_notdown_png,practise_right_png,score_unit_png,score_progress_png,fighting_go_png,fighting_ready_png,prop_dialog_left_1_png,prop_dialog_left_2_png,prop_dialog_left_3_png,prop_dialog_left_11_png,prop_dialog_left_12_png,prop_dialog_left_13_png,prop_dialog_right_1_png,prop_dialog_right_2_png,prop_dialog_right_3_png,prop_dialog_right_11_png,prop_dialog_right_12_png,prop_dialog_right_13_png,fighting_finish_png"
 		}
 	]
 }

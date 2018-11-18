@@ -2,6 +2,7 @@
 	"initial": [
 		"libs/modules/egret/egret.js",
 		"libs/modules/egret/egret.web.js",
+		"libs/modules/socket/socket.js",
 		"libs/modules/game/game.js",
 		"libs/modules/tween/tween.js",
 		"libs/modules/assetsmanager/assetsmanager.js",
@@ -9,9 +10,6 @@
 		"libs/modules/eui/eui.js"
 	],
 	"game": [
-		"bin-debug/scene/BattleMatchScene.js",
-		"bin-debug/scene/SelecteroleScene.js",
-		"bin-debug/scene/Template.js"
 		"bin-debug/utils/View.js",
 		"bin-debug/utils/Emitter.js",
 		"bin-debug/utils/Scene.js",
@@ -20,14 +18,17 @@
 		"bin-debug/component/BPAlert.js",
 		"bin-debug/component/BPNavigator.js",
 		"bin-debug/component/LevelStar.js",
+		"bin-debug/component/NavigationBar.js",
+		"bin-debug/scene/BattleMatchScene.js",
 		"bin-debug/LoadingUI.js",
-		"bin-debug/scene/Fighting.js",
+		"bin-debug/scene/SelecteroleScene.js",
 		"bin-debug/scene/SettlementScene.js",
 		"bin-debug/scene/Startup.js",
+		"bin-debug/scene/Template.js",
 		"bin-debug/utils/App.js",
 		"bin-debug/AssetAdpter.js",
 		"bin-debug/Main.js",
 		"bin-debug/utils/SeceneManage.js",
-		"bin-debug/component/NavigationBar.js"
+		"bin-debug/scene/Fighting.js"
 	]
 }

@@ -1,25 +1,26 @@
 
-class SelecteroleScene extends utils.Scene implements BPNavigatorAware {
+class SelecteroleScene extends utils.Scene {
 
     private battleTipAlert: BPAlert;
-    
-    private navigator: BPNavigator;
 
     private roleDetail: RuleDetailView;
 
     private selectContent;
 
-    public setNavigator(navigator: BPNavigator) {
-        this.navigator = navigator;
-    }
+    private firstDisplay: boolean;
 
-    public constructor() {
+    public constructor(firstDisplay: boolean = true) {
         super();
         // this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
+        this.firstDisplay = firstDisplay;
     }
 
     onAddStage () {
-        this.showBattleTips()
+        if (this.firstDisplay) {
+            this.showBattleTips()
+        } else {
+            this.createItems();
+        }
     }
 
     onRemoveStage () {
@@ -135,7 +136,6 @@ class SelecteroleScene extends utils.Scene implements BPNavigatorAware {
 
     private onstartBtnClick() {
         console.log('start')
-        // this.navigator.push(new BattleMatchScene())
         utils.App.pushScene(new BattleMatchScene())
     }
 
@@ -149,7 +149,6 @@ class SelecteroleScene extends utils.Scene implements BPNavigatorAware {
         //TODO 退出游戏
         console.log("backToMain")
         utils.App.popScene();
-        // this.navigator.pop();
     }
 }
 

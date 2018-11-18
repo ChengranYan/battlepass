@@ -56,6 +56,7 @@ class Main extends eui.UILayer {
     }
 
     private async runGame() {
+        GameHolder.start();
         await this.loadResource()
         this.createGameScene();
         // const result = await RES.getResAsync("description_json")
@@ -66,8 +67,8 @@ class Main extends eui.UILayer {
 
     private async loadResource() {
         try {
-            const loadingView = new LoadingUI();
-            this.stage.addChild(loadingView);
+            this.loadingView = new LoadingUI();
+            this.stage.addChild(this.loadingView);
             // egret.ImageLoader.crossOrigin = "anonymous";
             // await RES.loadConfig("http://192.168.3.103:5000/resource/default.res.json", "http://192.168.3.103:5000/resource/")
             // 注入自定义的素材解析器
@@ -107,13 +108,13 @@ class Main extends eui.UILayer {
 
         utils.App.init(this)
         // 启动scene
-        let startup = new Startup();
+        let startupScene = new StartupScene();
         // 对战scene
-        let fighting = new FightingScene();
+        // let fighting = new FightingScene();
         // 结算scene
-        let settlementScene = new SettlementScene(true, 1);
+        // let settlementScene = new SettlementScene(true, 1);
         
-        utils.App.pushScene(settlementScene);
+        utils.App.pushScene(startupScene);
         // utils.App.pushScene(settlementScene);
         // utils.App.pushScene(fighting);
     }

@@ -1,29 +1,29 @@
 
-class Startup extends utils.Scene implements BPNavigatorAware {
+class StartupScene extends utils.Scene {
 
     private comingSoonAlert: BPAlert;
     private newSeasonAlert: BPAlert;
 
-    private navigator: BPNavigator;
-
     private offlineMode: egret.Bitmap;
     private onlineMode: egret.Bitmap;
+    private firstDisplay: boolean;
 
-    public setNavigator(navigator: BPNavigator) {
-        this.navigator = navigator;
-    }
-
-    public constructor() {
+    public constructor(firstDisplay: boolean = true) {
         super();
         // this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
+        this.firstDisplay = firstDisplay;
     }
 
     onAddStage() {
         this.createItems();
 
-        var timer:egret.Timer = new egret.Timer(100,1);
-        timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,() => {this.newSeasonAlert.present(false, false)},this);
-        timer.start();
+        if (this.firstDisplay) {
+            var timer:egret.Timer = new egret.Timer(100,1);
+            timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,() => {this.newSeasonAlert.present(false, false)},this);
+            timer.start();
+        } else {
+            this.startAnimation();
+        }
     }
 
     onRemoveStage() {
@@ -48,8 +48,8 @@ class Startup extends utils.Scene implements BPNavigatorAware {
         }
         this.addChild(navigationBar);
 
-        let avatar = new egret.Bitmap();
-        avatar.texture = RES.getRes("new_popup_view_png");
+        let avatar = new eui.Image();
+        avatar.source = "https://wx.qlogo.cn/mmopen/vi_32/xicrRCPjKzWRpv3AyDmHVF8yEPS57ZxkJGFyDx3KNxPsiagFLfGr05VebiaJzkZsc9n32GvJR9JLMkBMdaT682cJw/132";
         avatar.width = 160;
         avatar.height = 160;
         avatar.y = 200;
@@ -114,11 +114,8 @@ class Startup extends utils.Scene implements BPNavigatorAware {
     }
 
     private enterOnlineMode() {
-        console.log("跳转准备阶段", this.navigator);
-        // let settlementScene = new SettlementScene(true, 1);
         let selecteroleScene = new SelecteroleScene();
         utils.App.pushScene(selecteroleScene);
-        // this.navigator.push(selecteroleScene);
     }
 
     private enterOfflineMode() {
@@ -136,7 +133,7 @@ class Startup extends utils.Scene implements BPNavigatorAware {
     private backToMain() {
         //TODO 退出游戏
         console.log("backToMain")
-        this.navigator.pop();
+
     }
 
     private startAnimation() {

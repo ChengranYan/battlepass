@@ -1,17 +1,12 @@
 
 
-class SettlementScene extends utils.Scene implements BPNavigatorAware {
+class SettlementScene extends utils.Scene {
 
     private _girl:egret.Bitmap;
     private _gameResult:egret.Bitmap;
     private _isWin:boolean;
     private _girlNo:number;
 
-    private navigator: BPNavigator;
-
-    public setNavigator(navigator: BPNavigator) {
-        this.navigator = navigator;
-    }
 
     public constructor(isWin:boolean, girlNo:number) {
         super();
@@ -102,14 +97,14 @@ class SettlementScene extends utils.Scene implements BPNavigatorAware {
     private backToMain() {
         //TODO 返回主页
         console.log("backToMain")
-        this.navigator.pop(0);
+        utils.App.pushSceneToRoot(new StartupScene(false));
     }
 
     private playAgain() {
         //TODO 重玩一次
         console.log("playAgain");
-        let startup = new Startup();
-        this.navigator.push(startup);
+        utils.App.pushSceneToRoot(new StartupScene(false));
+        utils.App.pushScene(new SelecteroleScene());
     }
 
 }
