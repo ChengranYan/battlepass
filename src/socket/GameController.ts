@@ -1,7 +1,10 @@
-
 class GameController extends egret.EventDispatcher {
 
     private _socket: egret.WebSocket;
+
+    public nickname: string;
+    public gender: number;
+    public avatar: string;
 
     public constructor() {
         super();
@@ -20,5 +23,27 @@ class GameController extends egret.EventDispatcher {
         var msg = this._socket.readUTF();    
         console.log("收到数据：" + msg);
     }
+
+    // 发送
+    // 匹配命令 nickname, gender, avatarUrl
+    // 退出匹配命令
+    // 游戏开始
+    // 答题命令 index, correct,
+    // 道具命令 propId,
+    // 游戏结束
+
+    // 接收
+    // 匹配成功
+    // 对方游戏开始
+    // 对方答题
+    // 对方道具
+    
+
+    public setUserInfo(nickname: string, gender: number, avatar: string) {
+        this.nickname = nickname;
+        this.gender = gender;
+        this.avatar = avatar;
+    }
+
 
 }

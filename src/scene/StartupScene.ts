@@ -38,13 +38,6 @@ class StartupScene extends utils.Scene {
         return (stageW / 2) - (width / 2);
     }
 
-    private async setUserInfo(avatar: eui.Image, nicknameGender: NicknameGender) {
-        const userInfo = await platform.getUserInfo();
-        avatar.source = userInfo["avatarUrl"];
-        nicknameGender.set(userInfo["nickName"], userInfo["gender"])
-        console.log(userInfo,'avatar')
-    }
-
     private createItems() {
         let stageW = this.stage.stageWidth;
         let stageH = this.stage.stageHeight;
@@ -56,9 +49,7 @@ class StartupScene extends utils.Scene {
         this.addChild(navigationBar);
 
         let avatar = new eui.Image();
-        // avatar.texture = RES.getRes("132_jpeg")
-        // avatar.source = "https://wx.qlogo.cn/mmopen/vi_32/xicrRCPjKzWRpv3AyDmHVF8yEPS57ZxkJGFyDx3KNxPsiagFLfGr05VebiaJzkZsc9n32GvJR9JLMkBMdaT682cJw/132";
-        
+        avatar.source = GameHolder.controller.avatar;
         avatar.width = 160;
         avatar.height = 160;
         avatar.y = 200;
@@ -66,7 +57,7 @@ class StartupScene extends utils.Scene {
         
         this.addChild(avatar);
         
-        let nicknameGender = new NicknameGender("小可爱", 1);
+        let nicknameGender = new NicknameGender(GameHolder.controller.nickname, GameHolder.controller.gender);
         nicknameGender.x = this.getCenterX(nicknameGender.width);
         nicknameGender.y = avatar.y + avatar.height + 30;
         this.addChild(nicknameGender);
@@ -120,8 +111,6 @@ class StartupScene extends utils.Scene {
         newSeasonView.addEventListener(egret.TouchEvent.TOUCH_TAP, this.dismissNewSeasonAlert, this);
         this.newSeasonAlert = new BPAlert(newSeasonView, this.stage);
         this.newSeasonAlert.addEventListener(BPAlert.ON_ALERT_DISMISS, this.startAnimation, this)
-
-        this.setUserInfo(avatar, nicknameGender)
     }
 
     private enterOnlineMode() {

@@ -56,14 +56,16 @@ class Main extends eui.UILayer {
     }
 
     private async runGame() {
-        GameHolder.start();
         await this.loadResource()
-        this.createGameScene();
-        // const result = await RES.getResAsync("description_json")
-        // 小游戏登录 & 获取用户信息
+
+        let bg = this.createBitmapByName("background_png");
+        this.addChild(bg);
+
         await platform.login();
         const userInfo = await platform.getUserInfo();
-        console.log(userInfo, "main");
+        
+        GameHolder.controller.setUserInfo(userInfo["nickName"], userInfo["gender"], userInfo["avatarUrl"]);
+        this.createGameScene();
     }
 
     private async loadResource() {
@@ -71,11 +73,12 @@ class Main extends eui.UILayer {
             this.loadingView = new LoadingUI();
             this.stage.addChild(this.loadingView);
             // egret.ImageLoader.crossOrigin = "anonymous";
-            // await RES.loadConfig("http://192.168.3.103:5000/resource/default.res.json", "http://192.168.3.103:5000/resource/")
+            
             // 注入自定义的素材解析器
             let assetAdapter = new AssetAdapter();
             egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
             egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
+            // await RES.loadConfig("http://192.168.3.103:5000/resource/default.res.json", "http://192.168.3.103:5000/resource/")
             await RES.loadConfig("resource/default.res.json", "resource/");
             // 加载 EUI Theme
             await new eui.Theme("resource/default.thm.json", this.stage);

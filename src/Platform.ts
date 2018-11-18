@@ -14,7 +14,7 @@ declare interface Platform {
 
 class DebugPlatform implements Platform {
     async getUserInfo() {
-        return { nickName: "username" }
+        return { nickName: "username", gender: 1, avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJgFxYzj6DKCl1P8MyDyhic4AKkpvdmcohBekXT3p5llqhuq0iciaMtvibN2P5oSCVPIic4ib7YY2iaicbFJQ/132" }
     }
     async login() {
 
