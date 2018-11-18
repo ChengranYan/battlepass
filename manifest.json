@@ -20,15 +20,17 @@
 		"bin-debug/component/LevelStar.js",
 		"bin-debug/component/NavigationBar.js",
 		"bin-debug/scene/BattleMatchScene.js",
+		"bin-debug/scene/FightingScene.js",
 		"bin-debug/LoadingUI.js",
-		"bin-debug/scene/SelecteroleScene.js",
 		"bin-debug/scene/SettlementScene.js",
-		"bin-debug/scene/Startup.js",
+		"bin-debug/scene/StartupScene.js",
 		"bin-debug/scene/Template.js",
+		"bin-debug/socket/GameController.js",
+		"bin-debug/socket/GameHolder.js",
 		"bin-debug/utils/App.js",
 		"bin-debug/AssetAdpter.js",
 		"bin-debug/Main.js",
 		"bin-debug/utils/SeceneManage.js",
-		"bin-debug/scene/Fighting.js"
+		"bin-debug/scene/SelecteroleScene.js"
 	]
 }

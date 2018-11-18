@@ -63,6 +63,7 @@ class Main extends eui.UILayer {
         // 小游戏登录 & 获取用户信息
         await platform.login();
         const userInfo = await platform.getUserInfo();
+        console.log(userInfo, "main");
     }
 
     private async loadResource() {

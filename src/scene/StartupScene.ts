@@ -38,6 +38,13 @@ class StartupScene extends utils.Scene {
         return (stageW / 2) - (width / 2);
     }
 
+    private async setUserInfo(avatar: eui.Image, nicknameGender: NicknameGender) {
+        const userInfo = await platform.getUserInfo();
+        avatar.source = userInfo["avatarUrl"];
+        nicknameGender.set(userInfo["nickName"], userInfo["gender"])
+        console.log(userInfo,'avatar')
+    }
+
     private createItems() {
         let stageW = this.stage.stageWidth;
         let stageH = this.stage.stageHeight;
@@ -49,7 +56,9 @@ class StartupScene extends utils.Scene {
         this.addChild(navigationBar);
 
         let avatar = new eui.Image();
-        avatar.source = "https://wx.qlogo.cn/mmopen/vi_32/xicrRCPjKzWRpv3AyDmHVF8yEPS57ZxkJGFyDx3KNxPsiagFLfGr05VebiaJzkZsc9n32GvJR9JLMkBMdaT682cJw/132";
+        // avatar.texture = RES.getRes("132_jpeg")
+        // avatar.source = "https://wx.qlogo.cn/mmopen/vi_32/xicrRCPjKzWRpv3AyDmHVF8yEPS57ZxkJGFyDx3KNxPsiagFLfGr05VebiaJzkZsc9n32GvJR9JLMkBMdaT682cJw/132";
+        
         avatar.width = 160;
         avatar.height = 160;
         avatar.y = 200;
@@ -111,6 +120,8 @@ class StartupScene extends utils.Scene {
         newSeasonView.addEventListener(egret.TouchEvent.TOUCH_TAP, this.dismissNewSeasonAlert, this);
         this.newSeasonAlert = new BPAlert(newSeasonView, this.stage);
         this.newSeasonAlert.addEventListener(BPAlert.ON_ALERT_DISMISS, this.startAnimation, this)
+
+        this.setUserInfo(avatar, nicknameGender)
     }
 
     private enterOnlineMode() {
@@ -148,6 +159,9 @@ class StartupScene extends utils.Scene {
 
 class NicknameGender extends egret.DisplayObjectContainer {
 
+    private nicknameTextField: egret.TextField;
+    private genderBitmap: egret.Bitmap;
+
     public constructor(nickname: string, gender: number) {
         super();
         this.createItems(nickname, gender);
@@ -176,6 +190,18 @@ class NicknameGender extends egret.DisplayObjectContainer {
         this.width = genderImage.x + genderImage.width;
         this.height = genderImage.height;
 
+        this.nicknameTextField = nicknameTextField;
+        this.genderBitmap = genderImage;
+
+    }
+
+    public set(nickname: string, gender: number) {
+        this.nicknameTextField.text = nickname;
+        if (gender == 1) {
+            this.genderBitmap.texture = RES.getRes("ic_boy_png");
+        } else {
+            this.genderBitmap.texture = RES.getRes("ic_girl_png");
+        }
     }
 
 }

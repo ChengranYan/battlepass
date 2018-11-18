@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="FightingScene" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+<e:Skin class="FightingSkin" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<w:Config id="166df2c0ebd"/>
 	<e:Image id="fightingBg" width="750" x="0" height="1334" y="0" source="fighting_bg_png" fillMode="scale"/>
 	<!-- 左边用户栏 -->

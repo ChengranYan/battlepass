@@ -71,6 +71,8 @@ class FightingScene extends utils.Scene {
     private _score: number = 0; //自己的分数
     private _adversaryScore: number = 0; //对方的分数
 
+    private _randomPropsCount: number = 3; // 剩余随机道具次数
+
     private _totalQuestion: number = 10;
     private _currentQuestionIndex: number = 0;
     private _questions = [
@@ -179,7 +181,7 @@ class FightingScene extends utils.Scene {
 
     constructor () {
         super();
-        this.skinName = "FightingScene";
+        this.skinName = "FightingSkin";
         this.optionBackgrounds = [this.optionABackground,this.optionBBackground,this.optionCBackground,this.optionDBackground];
         this.options = [this.optionA,this.optionB,this.optionC,this.optionD];
     }
@@ -305,6 +307,7 @@ class FightingScene extends utils.Scene {
             this._rightRoundBeginTime = new Date().getTime();
             this._currentQuestionIndex ++;
             this.redrawQuestion(this._currentQuestionIndex);
+            this.randomProp();
         }
     }
 
@@ -358,6 +361,35 @@ class FightingScene extends utils.Scene {
         }
     }
 
+    private randomProp() {
+
+        if (this._randomPropsCount > 0) {
+            let state = parseInt((((Math.random() * 100) % 3) + 1).toString());
+            let index = -1;
+            if (this.propsState[0] == 0) {
+                this.propsState[0] = state;
+                index = 0;
+            } else if (this.propsState[1] == 0) {
+                this.propsState[1] = state;
+                index = 1;
+            } else if (this.propsState[2] == 0) {
+                this.propsState[2] = state;
+                index = 2;
+            }
+            if (index != -1) {
+                this.redrawPropsBar();
+                this._randomPropsCount --;
+                let animateProp = [this.prop1Btn,this.prop2Btn,this.prop3Btn][index];
+                animateProp.scaleX = 0;
+                animateProp.scaleY = 0;
+                animateProp.alpha = 0;
+                egret.Tween.get(animateProp).to({alpha: 1, scaleX: 1, scaleY: 1}, 300, egret.Ease.backOut);
+            }
+        }
+
+        
+    }
+
     private backToMain() {
         console.log("返回")
         utils.App.popScene();
@@ -376,6 +408,8 @@ class FightingScene extends utils.Scene {
 
         this.userIcon_left.source = fooIcon        
         this.userIcon_right.source = fooIcon
+        // this.userIcon_left.texture = RES.getRes("132_jpeg");
+        // this.userIcon_right.texture = RES.getRes("132_jpeg");
         this.userName_left.text = '左左';
         this.userName_right.text = '右右';
         
@@ -384,6 +418,13 @@ class FightingScene extends utils.Scene {
         this.redrawAnswerState(this.userState_left, this.leftUserAnswerState);
         this.redrawAnswerState(this.userState_right, this.rightUserAnswerState);
         
+        [this.prop1Btn, this.prop2Btn, this.prop3Btn].forEach(v => {
+            v.anchorOffsetX = v.width / 2;
+            v.anchorOffsetY = v.height / 2;
+            v.x += v.anchorOffsetX;
+            v.y += v.anchorOffsetY;
+        })
+
         this.fightingBg.height = stageH;
         
         this.leftUserBar.y = navigationBar.height + 30;
