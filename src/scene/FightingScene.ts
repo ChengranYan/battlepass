@@ -2,6 +2,8 @@ const fooIcon = 'https://wx.qlogo.cn/mmopen/vi_32/xicrRCPjKzWRpv3AyDmHVF8yEPS57Z
 
 class FightingScene extends utils.Scene {
 
+    private drawingId: number;
+
     // 容器
     public leftUserBar: eui.Group;
     public rightUserBar: eui.Group;
@@ -16,6 +18,11 @@ class FightingScene extends utils.Scene {
     public userName_left: eui.Label;
     // 右侧玩家昵称
     public userName_right: eui.Label;
+    // 左侧玩家性别
+    public gender_icon_left: eui.Image;
+    // 右侧玩家性别
+    public gender_icon_right: eui.Image;
+    
     // 左侧玩家倒计时
     public countDown_left: eui.Label;
     // 右侧玩家倒计时
@@ -179,8 +186,9 @@ class FightingScene extends utils.Scene {
     ];
 
 
-    constructor () {
+    constructor (drawingId: number) {
         super();
+        this.drawingId = drawingId;
         this.skinName = "FightingSkin";
         this.optionBackgrounds = [this.optionABackground,this.optionBBackground,this.optionCBackground,this.optionDBackground];
         this.options = [this.optionA,this.optionB,this.optionC,this.optionD];
@@ -290,7 +298,7 @@ class FightingScene extends utils.Scene {
         }
         // 0没有道具，1减一道题，2减10秒，3墨汁
         if (state > 10) {
-            this.clothingAnimation(1);
+            this.clothingAnimation(this.drawingId);
         }
         this.propAnimation(state, true);
         
@@ -323,7 +331,7 @@ class FightingScene extends utils.Scene {
         //TODO 游戏结束
         this.popup("fighting_finish_png").call(() => {
             //到下一页面
-            let settlement = new SettlementScene(this._score > this._adversaryScore, 1);
+            let settlement = new SettlementScene(this._score > this._adversaryScore, this.drawingId);
             utils.App.pushScene(settlement);
         })
     }
@@ -406,14 +414,17 @@ class FightingScene extends utils.Scene {
         }
         this.addChild(navigationBar);
 
+        this.userName_left.text = '左左';
         this.userIcon_left.source = fooIcon        
-        this.userIcon_right.source = fooIcon
+        
         // this.userIcon_left.texture = RES.getRes("132_jpeg");
         // this.userIcon_right.texture = RES.getRes("132_jpeg");
-        this.userName_left.text = '左左';
-        this.userName_right.text = '右右';
         
-        this.propsState = [11,12,13];
+        this.userName_right.text = GameHolder.controller.nickname;
+        this.userIcon_right.source = GameHolder.controller.avatar
+        this.gender_icon_right.source = GameHolder.controller.gender  == 1 ? "ic_boy_png" : "ic_girl_png";
+        
+    this.propsState = GameHolder.propsByDrawingId(this.drawingId).map(t => t == 0 ? 0 : t + 10).concat(0);
         this.redrawPropsBar();
         this.redrawAnswerState(this.userState_left, this.leftUserAnswerState);
         this.redrawAnswerState(this.userState_right, this.rightUserAnswerState);

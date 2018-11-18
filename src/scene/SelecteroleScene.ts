@@ -136,7 +136,7 @@ class SelecteroleScene extends utils.Scene {
 
     private onstartBtnClick() {
         console.log('start')
-        utils.App.pushScene(new BattleMatchScene())
+        utils.App.pushScene(new BattleMatchScene(this.roleDetail.getDrawingId()))
     }
 
     private handleSelectRole (index: number) {
@@ -160,14 +160,8 @@ class RuleDetailView extends egret.DisplayObjectContainer {
     private prop1: egret.Bitmap;
     private prop2: egret.Bitmap;
 
-    private selectedRoleIndex;
+    private selectedRoleIndex = -1;
 
-    private propsList = [
-        ['prop_practice_png','prop_time_png'],
-        ['prop_ink_png','prop_ink_png'],
-        ['prop_ink_png', 'prop_practice_png'],
-        ['prop_time_png', 'prop_ink_png'],
-        ];
     
     public constructor(width: number) {
         super();
@@ -201,21 +195,21 @@ class RuleDetailView extends egret.DisplayObjectContainer {
         if (index == this.selectedRoleIndex) return ;
         
         this.selectedRoleIndex = index;
-        this.role.texture = RES.getRes(`erect_drawing_0${this.selectedRoleIndex + 1}_png`);
+        let drawingId = this.selectedRoleIndex + 1;
+        this.role.texture = RES.getRes(`erect_drawing_0${drawingId}_png`);
         this.role.width = this.role.texture.textureWidth / 1.5;
         this.role.height = this.role.texture.textureHeight / 1.5;
         this.role.x = -this.role.width;
         egret.Tween.get(this.role).to({x: 0}, 500, egret.Ease.backOut);
-
-        let props = this.propsList[index];
-        this.prop1.texture = RES.getRes(props[0]);
+        
+        this.prop1.texture = GameHolder.propImageByDrawingIdAndIndex(drawingId,0);
         this.prop1.width = this.prop1.texture.textureWidth / 1.5;
         this.prop1.height = this.prop1.texture.textureHeight / 1.5;
         this.prop1.x = this.width;
         this.prop1.y = this.decorator.y + this.decorator.height + 40;
         egret.Tween.get(this.prop1).wait(300).to({x: this.width - this.prop1.width - 94}, 500, egret.Ease.backOut);
 
-        this.prop2.texture = RES.getRes(props[1]);
+        this.prop2.texture = GameHolder.propImageByDrawingIdAndIndex(drawingId,1);
         this.prop2.width = this.prop2.texture.textureWidth / 1.5;
         this.prop2.height = this.prop2.texture.textureHeight / 1.5;
         this.prop2.x = this.width;
@@ -227,6 +221,9 @@ class RuleDetailView extends egret.DisplayObjectContainer {
         return this.selectedRoleIndex;
     }
 
+    public getDrawingId() {
+        return this.selectedRoleIndex + 1;
+    }
 
 }
 

@@ -5,13 +5,13 @@ class SettlementScene extends utils.Scene {
     private _girl:egret.Bitmap;
     private _gameResult:egret.Bitmap;
     private _isWin:boolean;
-    private _girlNo:number;
+    private _drawingId: number;
 
 
-    public constructor(isWin:boolean, girlNo:number) {
+    public constructor(isWin:boolean, drawingId:number) {
         super();
+        this._drawingId = drawingId;
         this._isWin = isWin;
-        this._girlNo = girlNo;
         // this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddStage, this);
     }
 
@@ -32,7 +32,7 @@ class SettlementScene extends utils.Scene {
         }
         this.addChild(navigationBar);
         let girl = new egret.Bitmap();
-        girl.texture = RES.getRes("drawing_0"+this._girlNo+"_png");
+        girl.texture = RES.getRes("drawing_0"+this._drawingId+"_png");
         girl.width /= 1.5;
         girl.height /= 1.5;
         girl.x = -girl.width;

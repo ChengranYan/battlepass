@@ -2,8 +2,11 @@ class BattleMatchScene extends utils.Scene {
 
     private waitingTimer: egret.Timer;
 
-    public constructor() {
+    private drawingId: number;
+
+    public constructor(drawingId: number) {
         super();
+        this.drawingId = drawingId;
         // this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
         this.addEventListener(egret.Event.REMOVED_FROM_STAGE, () => {this.waitingTimer.stop();this.waitingTimer = null;}, this);
     }
@@ -70,7 +73,7 @@ class BattleMatchScene extends utils.Scene {
         this.addChild(leftGirl);
 
         let rightGirl = new egret.Bitmap();
-        rightGirl.texture = RES.getRes("match_erect_drawing_01_png");
+        rightGirl.texture = RES.getRes(`match_erect_drawing_0${this.drawingId}_png`);
         rightGirl.width = rightGirl.width * leftScaleModulus;
         rightGirl.height = rightGirl.height * leftScaleModulus;
         rightGirl.anchorOffsetX = rightGirl.width / 2;
@@ -120,7 +123,7 @@ class BattleMatchScene extends utils.Scene {
 
 
         let rightItem1 = new egret.Bitmap();
-        rightItem1.texture = RES.getRes("prop_time_png")
+        rightItem1.texture = GameHolder.propImageByDrawingIdAndIndex(this.drawingId,0);
         rightItem1.width /= 1.5;
         rightItem1.height /= 1.5;
         rightItem1.x = stageW; // stageW - rightItem1.width - 32;
@@ -128,7 +131,7 @@ class BattleMatchScene extends utils.Scene {
         this.addChild(rightItem1);
 
         let rightItem2 = new egret.Bitmap();
-        rightItem2.texture = RES.getRes("prop_ink_png")
+        rightItem2.texture = GameHolder.propImageByDrawingIdAndIndex(this.drawingId,1);
         rightItem2.width /= 1.5;
         rightItem2.height /= 1.5;
         rightItem2.x = stageW; // stageW - rightItem2.width - 32;
@@ -187,7 +190,8 @@ class BattleMatchScene extends utils.Scene {
     }
 
     private toFight() {
-        let fighting = new FightingScene();
+        console.log(this.drawingId);
+        let fighting = new FightingScene(this.drawingId);
         utils.App.pushScene(fighting);
     }
 
@@ -306,8 +310,7 @@ class RightPlayer extends egret.DisplayObjectContainer {
         this.addChild(backgroundShape);
 
         let avatarSpace = 10;
-        let avatar = new egret.Bitmap();
-        avatar.texture = RES.getRes("avatar_drawing_01_png");
+        let avatar = new eui.Image();
         avatar.height = avatar.width = this.height - (avatarSpace * 2);
         avatar.x = avatarSpace;
         avatar.y = avatarSpace;
@@ -362,5 +365,13 @@ class RightPlayer extends egret.DisplayObjectContainer {
         level.x = avatar.x + avatar.width + 22;
         level.y = this.height - level.textHeight - 22;
         this.addChild(level);
+
+        username.text = GameHolder.controller.nickname;
+        avatar.source = GameHolder.controller.avatar
+        if (GameHolder.controller.gender == 1) {
+            genderImage.texture = RES.getRes("ic_boy_png");
+        } else {
+            genderImage.texture = RES.getRes("ic_girl_png");
+        }
     }
 }
