@@ -11,9 +11,9 @@
 	],
 	"game": [
 		"bin-debug/utils/View.js",
+		"bin-debug/socket/GameController.js",
 		"bin-debug/utils/Emitter.js",
 		"bin-debug/utils/Scene.js",
-		"bin-debug/Platform.js",
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/component/BPAlert.js",
 		"bin-debug/component/BPNavigator.js",
@@ -25,11 +25,11 @@
 		"bin-debug/scene/SettlementScene.js",
 		"bin-debug/scene/StartupScene.js",
 		"bin-debug/scene/Template.js",
-		"bin-debug/socket/GameController.js",
+		"bin-debug/AssetAdpter.js",
 		"bin-debug/socket/GameHolder.js",
 		"bin-debug/utils/App.js",
-		"bin-debug/AssetAdpter.js",
 		"bin-debug/Main.js",
+		"bin-debug/Platform.js",
 		"bin-debug/utils/SeceneManage.js",
 		"bin-debug/scene/SelecteroleScene.js"
 	]

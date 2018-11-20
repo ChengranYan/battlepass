@@ -15,6 +15,7 @@ class StartupScene extends utils.Scene {
     }
 
     onAddStage() {
+        console.log("onAddStage startup")
         this.createItems();
 
         if (this.firstDisplay) {
@@ -27,7 +28,7 @@ class StartupScene extends utils.Scene {
     }
 
     onRemoveStage() {
-        
+        console.log("onRemoveStage startup")
     }
 
 

@@ -78,8 +78,9 @@ class Main extends eui.UILayer {
             let assetAdapter = new AssetAdapter();
             egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
             egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
+            await RES.loadConfig("http://api-test.vlightv.com/bp/resource/default.res.json", "http://api-test.vlightv.com/bp/resource/")
             // await RES.loadConfig("http://192.168.3.103:5000/resource/default.res.json", "http://192.168.3.103:5000/resource/")
-            await RES.loadConfig("resource/default.res.json", "resource/");
+            // await RES.loadConfig("resource/default.res.json", "resource/");
             // 加载 EUI Theme
             await new eui.Theme("resource/default.thm.json", this.stage);
             await RES.loadGroup("preload", 0, this.loadingView);

@@ -302,10 +302,10 @@ class FightingScene extends utils.Scene {
         }
         this.propAnimation(state, true);
         
-        //TODO 使用道具 动画， socket消息
         this.propsState[index] = 0;
         this.redrawPropsBar()
 
+        GameHolder.controller.useProp(state);
     }
 
     private startNextRound() {
@@ -333,6 +333,7 @@ class FightingScene extends utils.Scene {
             //到下一页面
             let settlement = new SettlementScene(this._score > this._adversaryScore, this.drawingId);
             utils.App.pushScene(settlement);
+            GameHolder.controller.clear();
         })
     }
 
@@ -364,7 +365,7 @@ class FightingScene extends utils.Scene {
         this.redrawCountdownNumber(this.countDown_right, rightNum);
 
         if (rightNum < 0) {
-            this.handleAnswerState(this._currentQuestionIndex, false);
+            this.handleAnswerState(this.userState_right, this.rightUserAnswerState, this._currentQuestionIndex, false);
             this.startNextRound();
         }
     }
@@ -400,7 +401,8 @@ class FightingScene extends utils.Scene {
 
     private backToMain() {
         console.log("返回")
-        utils.App.popScene();
+        GameHolder.controller.clear();
+        utils.App.pushSceneToRoot(new StartupScene(false));
     }
 
     onAddStage() :void {
@@ -488,10 +490,11 @@ class FightingScene extends utils.Scene {
             return;
         }
 
-        let question = this._questions[this._currentQuestionIndex];
+        let questionIndex = this._currentQuestionIndex;
+        let question = this._questions[questionIndex];
         
         let correct = question.correctIndex == index;
-        this.handleAnswerState(this._currentQuestionIndex, correct);
+        this.handleAnswerState(this.userState_right, this.rightUserAnswerState, this._currentQuestionIndex, correct);
         this.markAnswerResult(index, correct);
         if (correct) {
             this._score += 10;
@@ -501,12 +504,14 @@ class FightingScene extends utils.Scene {
         }
         egret.Tween.get(this).wait(1500).call(() => {
             this.startNextRound();
+            GameHolder.controller.answer(questionIndex, correct);
         });
+
     }
 
-    private handleAnswerState(index: number, correct: boolean) {
-        this.rightUserAnswerState[index] = correct ? 2:1;
-        this.redrawAnswerState(this.userState_right, this.rightUserAnswerState);
+    private handleAnswerState(container: eui.Group, state: number[], index: number, correct: boolean) {
+        state[index] = correct ? 2:1;
+        this.redrawAnswerState(container, state);
     }
 
     private markAnswerResult(index: number, correct: boolean) {
@@ -591,6 +596,33 @@ class FightingScene extends utils.Scene {
             
             .wait(delay)
             .call(() => this.removeChild(image));
+    }
+
+    public onUseProp = ({propId}) => {
+        // 0没有道具，1减一道题，2减10秒，3墨汁
+        switch(propId) {
+            case 1:
+                this._totalQuestion --;
+                break;
+            case 2:
+                this._rightRoundBeginTime -= 10000; 
+                break;
+            case 3: 
+                // 墨汁？
+                break;
+        }
+        this.propAnimation(propId, false);
+    }
+
+    public onAnswer = ({questionIndex, correct,}) => {
+        this._leftRoundBeginTime = new Date().getTime();
+        this.handleAnswerState(this.userState_left, this.leftUserAnswerState, questionIndex, correct);
+        if (correct) {
+            this._adversaryScore += 10;
+            this.redrawScoreColumn([this.leftScoreColumn, this.leftScoreColumn_mask], this._adversaryScore);
+            this.redrawScore(1, this._adversaryScore);
+        }
+
     }
 
     onRemoveStage() :void {

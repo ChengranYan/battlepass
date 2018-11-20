@@ -29,6 +29,7 @@ class BattleMatchScene extends utils.Scene {
         let navigationBar = new NavigationBar("正在匹配");
         navigationBar.onBackDidClick = () => {
             utils.App.popScene();
+            GameHolder.controller.clear();
         }
         this.addChild(navigationBar);
 
@@ -173,7 +174,19 @@ class BattleMatchScene extends utils.Scene {
             egret.Tween.get(leftWindow).wait(630).to({x: 0}, 300, egret.Ease.backOut);
             egret.Tween.get(leftUnknown).wait(800).to({x: leftUnknown.width / 2}, 300, egret.Ease.backOut);
             egret.Tween.get(matchingText).wait(900).to({x: 40}, 300, egret.Ease.backOut);
-        }).wait(4000).call(() => {
+        });
+        
+        GameHolder.controller.onMate = (data) => {
+
+            let fighting = new FightingScene(this.drawingId);
+            GameHolder.controller.onUseProp = fighting.onUseProp;
+            GameHolder.controller.onAnswer = fighting.onAnswer;
+
+            leftGirl.texture = RES.getRes(`match_erect_drawing_0${data.drawingId}_png`);
+            leftItem1.texture = GameHolder.propImageByDrawingIdAndIndex(this.drawingId,0);
+            leftItem2.texture = GameHolder.propImageByDrawingIdAndIndex(this.drawingId,1);
+            leftPlayer.setInfo(data.nickname, data.avatar, data.gender);
+
             egret.Tween.get(leftUnknown).wait(0).to({alpha: 0}, 300, egret.Ease.backOut);
             egret.Tween.get(matchingText).wait(0).to({alpha: 0}, 300, egret.Ease.backOut);
 
@@ -182,17 +195,18 @@ class BattleMatchScene extends utils.Scene {
             egret.Tween.get(leftItem1).wait(250).to({x: 32}, 300, egret.Ease.backOut);
             egret.Tween.get(leftItem2).wait(350).to({x: 32}, 300, egret.Ease.backOut);
 
-            egret.Tween.get(vs).wait(800).to({alpha: 1, scaleX: 1, scaleY: 1}, 300, egret.Ease.backOut);
-        }).wait(3000).call(() => {
-            this.toFight();
-        });
-        
-    }
+            egret.Tween.get(vs).wait(800)
+                .to({alpha: 1, scaleX: 1, scaleY: 1}, 300, egret.Ease.backOut)
+                .wait(3000).call(() => {
+                    utils.App.pushScene(fighting);
+                });
+        }
 
-    private toFight() {
-        console.log(this.drawingId);
-        let fighting = new FightingScene(this.drawingId);
-        utils.App.pushScene(fighting);
+        GameHolder.controller.connect();
+        egret.Tween.get(this).wait(3000).call(() => {
+            GameHolder.controller.mate(this.drawingId);
+        })
+        
     }
 
 
@@ -201,6 +215,11 @@ class BattleMatchScene extends utils.Scene {
 
 
 class LeftPlayer extends egret.DisplayObjectContainer {
+
+    public avatar: eui.Image;
+    public nickname: egret.TextField;
+    public genderImage: egret.Bitmap;
+
 
     public constructor(width: number) {
         super();
@@ -224,12 +243,13 @@ class LeftPlayer extends egret.DisplayObjectContainer {
         this.addChild(backgroundShape);
 
         let avatarSpace = 10;
-        let avatar = new egret.Bitmap();
+        let avatar = new eui.Image();
         avatar.texture = RES.getRes("avatar_drawing_03_png");
         avatar.height = avatar.width = this.height - (avatarSpace * 2);
         avatar.x = width - avatar.width - avatarSpace * 2;
         avatar.y = avatarSpace;
         this.addChild(avatar);
+        this.avatar = avatar;
 
         let avatarMask = new egret.Shape();
         avatarMask.x = avatar.x;
@@ -259,6 +279,7 @@ class LeftPlayer extends egret.DisplayObjectContainer {
         username.x = avatar.x - username.textWidth - 22;
         username.y = 22;
         this.addChild(username);
+        this.nickname = username;
 
         let genderImage = new egret.Bitmap();
         if (gender == 1) {
@@ -271,6 +292,7 @@ class LeftPlayer extends egret.DisplayObjectContainer {
         genderImage.x = username.x - genderImage.width - 22;
         genderImage.y = 22;
         this.addChild(genderImage);
+        this.genderImage = genderImage;
 
         let level = new egret.TextField();
         level.text = "白银三段";
@@ -281,6 +303,17 @@ class LeftPlayer extends egret.DisplayObjectContainer {
         level.y = this.height - level.textHeight - 22;
         this.addChild(level);
     }
+
+    public setInfo(nickname: string, avatar: string, gender: number) {
+        this.nickname.text = nickname;
+        this.avatar.source = avatar
+        if (gender == 1) {
+            this.genderImage.texture = RES.getRes("ic_boy_png");
+        } else {
+            this.genderImage.texture = RES.getRes("ic_girl_png");
+        }
+    }
+
 }
 
 
