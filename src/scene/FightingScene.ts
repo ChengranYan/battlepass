@@ -87,7 +87,6 @@ class FightingScene extends utils.Scene {
     private _currentQuestionIndex: number = 0;
     private _questions = [];
 
-
     constructor (drawingId: number, nickname: string, gender: number, avatar: string) {
         super();
         this.drawingId = drawingId;
@@ -358,10 +357,16 @@ class FightingScene extends utils.Scene {
             
         this.centerWindow.y = Math.max(centerWindowY, this.leftUserBar.y + this.leftUserBar.height + 60);
 
-
+     
         this.gameStartAnimation();
         this.redrawQuestion(0);
         this.addAllListener();
+        this.playSound();
+
+    }
+
+    private playSound () {
+        utils.SoundManage.playBGM('https://wx-static.yangcong345.com/sound/bgm_battle.mp3')
     }
 
     private addAllListener() {
@@ -408,6 +413,12 @@ class FightingScene extends utils.Scene {
             this.redrawScoreColumn([this.rightScoreColumn, this.rightScoreColumn_mask], this._score);
             this.redrawScore(2, this._score);
             this.popup("add_ten_points_png", 1500)
+            // 题目错误
+            utils.SoundManage.playSmSound('https://wx-static.yangcong345.com/sound/battle_right.mp3')
+            console.log('wrong')
+        } else {
+            utils.SoundManage.playSmSound('https://wx-static.yangcong345.com/sound/battle_wrong.mp3')
+            console.log('correct')
         }
         egret.Tween.get(this).wait(1500).call(() => {
             this.startNextRound();
@@ -534,9 +545,12 @@ class FightingScene extends utils.Scene {
         this._leftRoundBeginTime = new Date().getTime();
         this.handleAnswerState(this.userState_left, this.leftUserAnswerState, questionIndex, correct);
         if (correct) {
+            // 题目正确
             this._adversaryScore += 10;
             this.redrawScoreColumn([this.leftScoreColumn, this.leftScoreColumn_mask], this._adversaryScore);
             this.redrawScore(1, this._adversaryScore);
+            
+        } else {
         }
 
     }

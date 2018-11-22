@@ -13,7 +13,6 @@ namespace utils {
             this.addEventListener(egret.Event.REMOVED_FROM_STAGE, this._onRemove, this);
             this._evtPoll = {};
         }
-        
         /**
          * 监听数据改变
          */
@@ -52,7 +51,7 @@ namespace utils {
         private _onAdd(e){
             this.onAddStage();
         }
-        
+
         private _onRemove(e){
             this.removeEventListener(egret.Event.ADDED_TO_STAGE, this._onAdd, this);
             this.removeEventListener(egret.Event.REMOVED_FROM_STAGE, this._onRemove, this);

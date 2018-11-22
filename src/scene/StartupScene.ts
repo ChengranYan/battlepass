@@ -25,13 +25,16 @@ class StartupScene extends utils.Scene {
         } else {
             this.startAnimation();
         }
+        this.playSound()
     }
 
     onRemoveStage() {
         console.log("onRemoveStage startup")
     }
 
-
+    private playSound () {
+        utils.SoundManage.playBGM('https://wx-static.yangcong345.com/sound/bgm_out.mp3')
+    }
 
     private getCenterX(width:number) {
         let stageW = this.stage.stageWidth;
@@ -55,8 +58,16 @@ class StartupScene extends utils.Scene {
         avatar.height = 160;
         avatar.y = 200;
         avatar.x = this.getCenterX(avatar.width);
+
+        let avatarMask = new eui.Rect(160, 160, 0xffffff)
+        avatarMask.ellipseWidth = 160;
+        avatarMask.ellipseHeight = 160;
+        avatar.mask = avatarMask;
+        avatarMask.x = this.getCenterX(avatar.width);
+        avatarMask.y = 200;
         
         this.addChild(avatar);
+        this.addChild(avatarMask);
         
         let nicknameGender = new NicknameGender(GameHolder.controller.nickname, GameHolder.controller.gender);
         nicknameGender.x = this.getCenterX(nicknameGender.width);
@@ -122,6 +133,10 @@ class StartupScene extends utils.Scene {
     private enterOfflineMode() {
         console.log('enterOfflineMode')
         this.comingSoonAlert.present(true);
+
+        // 对战scene
+        // let fighting = new FightingScene(1, '123', 1, 'http://baidu.com');
+        // utils.App.pushScene(fighting);
     }
     private dismissComingSoonAlert() {
         this.comingSoonAlert.dismiss();
