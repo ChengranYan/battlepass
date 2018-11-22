@@ -3,6 +3,9 @@ const fooIcon = 'https://wx.qlogo.cn/mmopen/vi_32/xicrRCPjKzWRpv3AyDmHVF8yEPS57Z
 class FightingScene extends utils.Scene {
 
     private drawingId: number;
+    private nickname: string;
+    private gender: number;
+    private avatar: string;
 
     // 容器
     public leftUserBar: eui.Group;
@@ -82,116 +85,19 @@ class FightingScene extends utils.Scene {
 
     private _totalQuestion: number = 10;
     private _currentQuestionIndex: number = 0;
-    private _questions = [
-        {
-	    "question" : "-6的相反数是( )。",
-	    "correctIndex": 2,
-	    "options": [
-	        "A.1/6",
-	        "B.-1/6",
-	        "C.6",
-	        "D.-6"
-    	]
-	},
-	{
-	    "question" : "2的绝对值是( )。",
-	    "correctIndex": 1,
-	    "options": [
-	        "A.-2",
-	        "B.2",
-	        "C.-1/2",
-	        "D.1/2"
-    	]
-	},
-  {
-    "question": "下列各数中比-1大的数是( )。",
-    "correctIndex": 1,
-    "options": [
-      "A.-2",
-      "B.0",
-      "C.-1",
-      "D.-3"
-    ]
-  },
-  {
-    "question": "互为相反数的两个数的和为( )。",
-    "correctIndex": 0,
-    "options": [
-      "A.0",
-      "B.-1",
-      "C.1",
-      "D.2"
-    ]
-  },
-  {
-    "question": "下列说法错误的是( )。",
-    "correctIndex": 1,
-    "options": [
-      "A.0是正数和负数的分界",
-      "B.0只表示“什么都没有”",
-      "C.0可以表示特定的意义",
-      "D.0是自然数"
-    ]
-  },
-  {
-    "question": "今天最高气温10度，最低气温-5度，今天的温差是( )。",
-    "correctIndex": 2,
-    "options": [
-      "A.10度",
-      "B.5度",
-      "C.15度",
-      "D.-5度"
-    ]
-  },
-  {
-    "question": "下列说法正确的是( )。",
-    "correctIndex": 3,
-    "options": [
-      "A.x的次数是0",
-      "B.x的系数是0",
-      "C.-1是一次单项式",
-      "D.-1是单项式"
-    ]
-  },
-  {
-    "question": "若3x+2a-6=0，那么6x+4a的值为( )。",
-    "correctIndex": 3,
-    "options": [
-      "A.-6",
-      "B.不可解",
-      "C.-3",
-      "D.12"
-    ]
-  },
-  {
-    "question": "方程2x+a=4的解是x=2，则a等于( )。",
-    "correctIndex": 1,
-    "options": [
-      "A.-8",
-      "B.0",
-      "C.2",
-      "D.8"
-    ]
-  },
-  {
-    "question": "计算：3a-(2a-b)=( )。",
-    "correctIndex": 2,
-    "options": [
-      "A.5a-b",
-      "B.a-b",
-      "C.a+b",
-      "D.2a+b"
-    ]
-  }
-    ];
+    private _questions = [];
 
 
-    constructor (drawingId: number) {
+    constructor (drawingId: number, nickname: string, gender: number, avatar: string) {
         super();
         this.drawingId = drawingId;
+        this.nickname = nickname;
+        this.gender = gender;
+        this.avatar = avatar;
         this.skinName = "FightingSkin";
         this.optionBackgrounds = [this.optionABackground,this.optionBBackground,this.optionCBackground,this.optionDBackground];
         this.options = [this.optionA,this.optionB,this.optionC,this.optionD];
+        this._questions = GameHolder.randomQuestion();
     }
 
     private redrawAnswerState(container: eui.Group, states: number[]) {
@@ -416,8 +322,9 @@ class FightingScene extends utils.Scene {
         }
         this.addChild(navigationBar);
 
-        this.userName_left.text = '左左';
-        this.userIcon_left.source = fooIcon        
+        this.userName_left.text = this.nickname;
+        this.userIcon_left.source = this.avatar;        
+        this.gender_icon_left.source = this.gender == 1 ? "ic_boy_png" : "ic_girl_png";
         
         // this.userIcon_left.texture = RES.getRes("132_jpeg");
         // this.userIcon_right.texture = RES.getRes("132_jpeg");
@@ -609,6 +516,15 @@ class FightingScene extends utils.Scene {
                 break;
             case 3: 
                 // 墨汁？
+                let ink = new egret.Bitmap();
+                ink.texture = RES.getRes("prop_ink_effect_png");
+                ink.width /= 1.5;
+                ink.height /= 1.5;
+                ink.x = this.stage.stageWidth / 2 - ink.width / 2;
+                ink.y = this.centerWindow.y;
+                ink.touchEnabled = true;
+                this.addChild(ink);
+                egret.Tween.get(ink).wait(3000).to({alpha: 0},300).call(() => this.removeChild(ink));
                 break;
         }
         this.propAnimation(propId, false);

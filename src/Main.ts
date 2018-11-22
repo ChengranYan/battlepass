@@ -78,7 +78,7 @@ class Main extends eui.UILayer {
             let assetAdapter = new AssetAdapter();
             egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
             egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
-            await RES.loadConfig("http://api-test.vlightv.com/bp/resource/default.res.json", "http://api-test.vlightv.com/bp/resource/")
+            await RES.loadConfig("https://ios.vlightv.com/bp/resource/default.res.json", "https://ios.vlightv.com/bp/resource/")
             // await RES.loadConfig("http://192.168.3.103:5000/resource/default.res.json", "http://192.168.3.103:5000/resource/")
             // await RES.loadConfig("resource/default.res.json", "resource/");
             // 加载 EUI Theme
@@ -104,7 +104,7 @@ class Main extends eui.UILayer {
         let stageH = this.stage.stageHeight;
         bg.width = stageW;
         bg.height = stageH;
-
+GameHolder.randomQuestion();
 //        let settlementScene = new SettlementScene(true, 1);
 //        let startup = new Startup();
 //        let selectRoleScene = new SelecteroleScene();

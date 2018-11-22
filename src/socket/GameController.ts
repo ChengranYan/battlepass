@@ -3,6 +3,7 @@
 class GameController extends egret.EventDispatcher {
 
     private _socket: egret.WebSocket;
+    private _timer: egret.Timer;
 
     public nickname: string;
     public gender: number;
@@ -22,13 +23,26 @@ class GameController extends egret.EventDispatcher {
         this._socket = new egret.WebSocket();       
         this._socket.addEventListener(egret.ProgressEvent.SOCKET_DATA, this.onReceiveMessage, this);                            
         this._socket.addEventListener(egret.Event.CONNECT, this.onSocketOpen, this);    
-        this._socket.connectByUrl("ws://api-test.vlightv.com/battle/pass");
+        this._socket.connectByUrl("wss://ios.vlightv.com/battle/pass");
+        this._timer = new egret.Timer(20000, 0);
+        this._timer.addEventListener(egret.TimerEvent.TIMER, this.ping, this);
+        this._timer.start();
+    }
+
+    private ping() {
+        this.sendMessage({
+            "cmd": "ping"
+        });
     }
 
     public close() {
         if (this._socket) {
             this._socket.close();
             this._socket = null;
+        }
+        if (this._timer) {
+            this._timer.stop();
+            this._timer = null;
         }
     }
 

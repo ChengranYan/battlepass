@@ -178,7 +178,7 @@ class BattleMatchScene extends utils.Scene {
         
         GameHolder.controller.onMate = (data) => {
 
-            let fighting = new FightingScene(this.drawingId);
+            let fighting = new FightingScene(this.drawingId, data.nickname, data.gender, data.avatar);
             GameHolder.controller.onUseProp = fighting.onUseProp;
             GameHolder.controller.onAnswer = fighting.onAnswer;
 
